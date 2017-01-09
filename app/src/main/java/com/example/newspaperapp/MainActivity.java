@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -69,12 +69,6 @@ public class MainActivity extends AppCompatActivity {
             startService(itent);
         }
 
-        //REFERENCE THE SCROLLABLE LAYOUT STRUCTURE IN MAIN_SCREEN.XML
-        featStoryList = (LinearLayout) findViewById(R.id.linearList);
-
-        //FILL THE SCROLLABLE LAYOUT STRUCTURE WITH FEATURED STORIES
-        fillFeaturedCarousel();
-
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         customSwipeAdapter = new CustomSwipeAdapter(this);
         viewPager.setAdapter(customSwipeAdapter);
@@ -98,44 +92,9 @@ public class MainActivity extends AppCompatActivity {
         makeList();
     }
 
-    private void fillFeaturedCarousel() {
-        // POPULATE THE LINEAR LIST CAROUSEL WITH FEATURED STORIES
-        ImageButton buttonItem;
-
-        for (int i = 0; i < FeaturedStoryDatabase.description.length; i++) {
-            //STORE THE INDIVIDUAL PAINTINGS AS BUTTONS
-            buttonItem = new ImageButton(this);
 
 
-            Story story = new Story(FeaturedStoryDatabase.description[i], FeaturedStoryDatabase.id[i]);
 
-            //USE THE CONTENT DESCRIPTION PROPERTY TO STORE
-            //STORY DATA
-
-            buttonItem.setContentDescription(story.getDescription());
-
-            //LOAD THE STORY USING ITS UNIQUE ID
-
-            buttonItem.setImageDrawable(getResources().getDrawable(
-                    story.getId()));
-
-            //SET AN ONCLICK LISTENER FOR THE IMAGE BUTTON
-            buttonItem.setOnClickListener(retrieveStory);
-
-            //ADD THE IMAGE BUTTON TO THE SCROLLABLE LINEAR LIST
-            featStoryList.addView(buttonItem);
-        }
-    }
-
-    private View.OnClickListener retrieveStory = new View.OnClickListener() {
-        public void onClick(View btn) {
-            // COLLECT THE INFORMATION STORED ABOUT THE STORY
-            String paintingDescription = (String) btn.getContentDescription();
-
-            // TODO: MAKE A METHOD CALL TO RETRIEVE THE STORY
-
-        }
-    };
 
     private boolean checkPlayServices(){
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
