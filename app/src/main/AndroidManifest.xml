@@ -4,8 +4,11 @@
 
     <uses-permission android:name="android.permission.Internet" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <permission android:name="com.example.newspaperapp.permission.C2D_MESSAGE"
-        android:protectionLevel="signature"/>
+
+    <permission
+        android:name="com.example.newspaperapp.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="com.example.newspaperapp.permission.C2D_MESSAGE" />
 
     <application
@@ -28,26 +31,29 @@
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </receiver>
 
         <!-- GCM Receiver Service -->
-        <service android:name=".GCMPushReceiverService" android:exported="false">
+        <service
+            android:name=".GCMPushReceiverService"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
 
         <!-- GCM Registration Intent Service -->
-        <service android:name=".GCMRegistrationIntentService" android:exported="false">
+        <service
+            android:name=".GCMRegistrationIntentService"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
 
-
-
+        <activity android:name=".ArticleActivity"></activity>
     </application>
 
 </manifest>

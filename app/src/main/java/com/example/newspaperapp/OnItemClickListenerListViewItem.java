@@ -1,6 +1,7 @@
 package com.example.newspaperapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -20,5 +21,10 @@ public class OnItemClickListenerListViewItem implements AdapterView.OnItemClickL
         String listItemText = textViewItem.getText().toString();
         String listItemId = textViewItem.getTag().toString();
 
-        Toast.makeText(ctx, listItemText + " The item you clicked is No."+listItemId, Toast.LENGTH_SHORT).show();}
+        Intent intent = new Intent(ctx, ArticleActivity.class);
+        intent.putExtra("link", listItemText);
+
+        ctx.startActivity(intent);
+    }
+
 }
