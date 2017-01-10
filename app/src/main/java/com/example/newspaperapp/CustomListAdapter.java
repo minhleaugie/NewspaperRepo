@@ -41,7 +41,7 @@ public class CustomListAdapter extends ArrayAdapter<ObjectItem> {
         imageViewItem.setImageResource(objectItem.itemImage);
 
         TextView textViewItem = (TextView) convertView.findViewById(R.id.textViewItem);
-        textViewItem.setText(objectItem.itemName);
+        textViewItem.setText(objectItem.itemLink);
         textViewItem.setTag(objectItem.itemId);
 
         return convertView;
