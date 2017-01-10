@@ -5,6 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -15,6 +16,8 @@ import android.widget.LinearLayout;
 public class CustomSwipeAdapter extends PagerAdapter {
     private int[] image_resources = {R.drawable.dog1, R.drawable.dog2, R.drawable.dog3, R.drawable.dog4,
             R.drawable.dog5, R.drawable.dog6, R.drawable.dog7};
+    private String reallyBigString = "this is a really big String. let's see if the text will wrap or if the app will explode. please don't explode, though";
+    private String[] image_names = {"This dog is awesome", "This dog is awesome, too", "blahblah", reallyBigString, "how big is this array", "it's 7","this is the last"};
     private Context ctx;
     private LayoutInflater layoutInflater;
 
@@ -40,6 +43,8 @@ public class CustomSwipeAdapter extends PagerAdapter {
         imageView.setImageResource(image_resources[position]);
         imageView.getLayoutParams().width=container.getWidth();
         imageView.getLayoutParams().height=container.getHeight();
+        Button button = (Button) item_view.findViewById(R.id.text_view);
+        button.setText(image_names[position]);
         container.addView(item_view);
         return item_view;
     }

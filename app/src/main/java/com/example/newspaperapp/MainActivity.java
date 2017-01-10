@@ -9,9 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,23 +18,10 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static android.graphics.Color.BLACK;
-import static android.graphics.Color.GRAY;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout featStoryList;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
-
-
-    private Button b1;
-    private Button b2;
-    private Button b3;
-    private Button b4;
-    private Button b5;
-
-    private Button selectedButton;
-
     ViewPager viewPager;
     CustomSwipeAdapter customSwipeAdapter;
     Timer timer;
@@ -75,26 +59,9 @@ public class MainActivity extends AppCompatActivity {
         page = 0;
         pageSwitcher(5);
 
-        b1 = (Button) findViewById(R.id.button);
-        b2 = (Button) findViewById(R.id.button2);
-        b3 = (Button) findViewById(R.id.button3);
-        b4 = (Button) findViewById(R.id.button4);
-        b5 = (Button) findViewById(R.id.button5);
-
-        selectedButton = b1;
-
-        b1.setOnClickListener(clicked);
-        b2.setOnClickListener(clicked);
-        b3.setOnClickListener(clicked);
-        b4.setOnClickListener(clicked);
-        b5.setOnClickListener(clicked);
 
         makeList();
     }
-
-
-
-
 
     private boolean checkPlayServices(){
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
@@ -126,15 +93,6 @@ public class MainActivity extends AppCompatActivity {
         Log.w("MainActivity", "onPause");
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
     }
-
-    private View.OnClickListener clicked = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            selectedButton.setTextColor(GRAY);
-            selectedButton = (Button) view;
-            selectedButton.setTextColor(BLACK);
-        }
-    };
 
     public void pageSwitcher(int seconds) {
         timer = new Timer();

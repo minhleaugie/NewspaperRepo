@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/linear_layout">
@@ -8,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/linearlayout">
+        android:id="@+id/relative_layout">
 
         <ImageView
             android:id="@+id/image_view"
@@ -18,14 +19,32 @@
             android:src="@drawable/dog1">
         </ImageView>
 
-        <TextView
+        <Button
+            android:text="Article topic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="hello world"
-            android:textColor="@android:color/black"
-            android:padding="100dp"
-            android:textSize="50dp"
-            android:id="@+id/text_view"/>
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/text_view"
+            android:background="#66000000"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:textSize="20dp"
+            android:paddingLeft="60dp">
+        </Button>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/right_arrow"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/imageView2"
+            android:layout_alignTop="@+id/text_view" />
 
     </RelativeLayout>
     
