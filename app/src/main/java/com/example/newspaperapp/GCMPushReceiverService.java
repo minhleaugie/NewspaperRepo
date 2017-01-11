@@ -39,10 +39,10 @@ public class GCMPushReceiverService extends GcmListenerService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, requestCode, intent, PendingIntent.FLAG_ONE_SHOT);
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.observer_logo)
                 .setContentText(message)
                 .setSound(sound)
-                .setContentTitle("PushNotification")
+                .setContentTitle("Augustana Observer")
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent).build(); //change minSDK in app level gradle, not sure of the repercussions
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

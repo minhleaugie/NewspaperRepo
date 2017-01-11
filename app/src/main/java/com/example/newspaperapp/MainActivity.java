@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -53,8 +54,12 @@ public class MainActivity extends AppCompatActivity {
             startService(itent);
         }
 
+        HandleXML handler = new HandleXML("http://www.augustanaobserver.com/feed");
+        handler.fetchXML();
+        while(handler.parsingComplete);
+        ArrayList<XMLItem> items = handler.getItem();
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        customSwipeAdapter = new CustomSwipeAdapter(this);
+        customSwipeAdapter = new CustomSwipeAdapter(this, items);
         viewPager.setAdapter(customSwipeAdapter);
         page = 0;
         pageSwitcher(5);

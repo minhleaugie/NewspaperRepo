@@ -1,6 +1,7 @@
 package com.example.newspaperapp;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by Ver on 1/7/2017.
@@ -20,9 +25,11 @@ public class CustomSwipeAdapter extends PagerAdapter {
     private String[] image_names = {"This dog is awesome", "This dog is awesome, too", "blahblah", reallyBigString, "how big is this array", "it's 7","this is the last"};
     private Context ctx;
     private LayoutInflater layoutInflater;
+    private ArrayList<XMLItem> items;
 
-    public CustomSwipeAdapter(Context ctx){
+    public CustomSwipeAdapter(Context ctx, ArrayList<XMLItem> items){
         this.ctx = ctx;
+        this.items = items;
     }
 
     @Override
@@ -37,6 +44,11 @@ public class CustomSwipeAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        String title = items.get(position).getTitle();
+        if(title.equals("Augustana Observer") || title.equals("title")){
+            items.remove(position);
+            title = items.get(position).getTitle();
+        }
         layoutInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View item_view = layoutInflater.inflate(R.layout.swipe_layout, container, false);
         ImageView imageView = (ImageView) item_view.findViewById(R.id.image_view);
@@ -44,7 +56,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
         imageView.getLayoutParams().width=container.getWidth();
         imageView.getLayoutParams().height=container.getHeight();
         Button button = (Button) item_view.findViewById(R.id.text_view);
-        button.setText(image_names[position]);
+        button.setText(title);
         container.addView(item_view);
         return item_view;
     }

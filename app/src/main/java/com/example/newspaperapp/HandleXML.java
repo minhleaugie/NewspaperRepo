@@ -28,6 +28,7 @@ public class HandleXML {
     public ArrayList<XMLItem> getItem(){ return items;}
 
     public void parseXMLAndStoreIt(XmlPullParser myParser) {
+
         int event;
         String text = null;
         items = new ArrayList<>();
