@@ -56,6 +56,28 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         customSwipeAdapter = new CustomSwipeAdapter(this);
         viewPager.setAdapter(customSwipeAdapter);
+        timer = new Timer();
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                try {
+                    timer.wait(10000);
+                } catch (Exception e) {
+                    //Throw an exception
+                }
+
+            }
+        });
         page = 0;
         pageSwitcher(5);
 
@@ -95,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pageSwitcher(int seconds) {
-        timer = new Timer();
         timer.scheduleAtFixedRate(new RemindTask(), 0, seconds * 1000);
     }
 
@@ -112,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
                         page = 0;
                         viewPager.setCurrentItem(page);
                     } else {
-                        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                         page = viewPager.getCurrentItem() + 1;
+                        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                     }
                 }
             });
