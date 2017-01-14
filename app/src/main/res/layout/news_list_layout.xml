@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
-    android:weightSum="5"
-
-    >
 
     <ImageView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+
         android:id="@+id/imageViewIcon"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="4"
-        android:src="@drawable/augie_observer"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/textViewNews"
-        android:layout_width="fill_parent"
+        android:text="TextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:text="@string/augie_observer"/>
 
-</LinearLayout>
+        android:gravity="center_vertical"
+        android:textSize="15dp"
+        android:id="@+id/textViewNews"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/imageViewIcon"
+        android:layout_toRightOf="@+id/imageViewIcon" />
+</RelativeLayout>
