@@ -10,13 +10,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     CustomSwipeAdapter customSwipeAdapter;
     Timer timer;
     int page;
+    private List<RssItem> items;
+    private Button b1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
+
+        makeNewsList();
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             //We are sending the broadcast from GCMRegistrationIntentService
@@ -58,10 +63,6 @@ public class MainActivity extends AppCompatActivity {
             startService(itent);
         }
 
-        HandleXML handler = new HandleXML("http://www.augustanaobserver.com/feed");
-        handler.fetchXML();
-        while(handler.parsingComplete);
-        ArrayList<XMLItem> items = handler.getItem();
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         customSwipeAdapter = new CustomSwipeAdapter(this, items);
         viewPager.setAdapter(customSwipeAdapter);
@@ -90,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
         page = 0;
         pageSwitcher(5);
 
-
-        makeNewsList();
     }
 
     private boolean checkPlayServices(){
@@ -169,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
         //initiate the RssItem list from the Home
         //AUGUSTTANA_LINKS[0] is the first item in AUGUSTANA_LINKS, the feeds of Home page
-        List<RssItem> items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0]);
+        items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0]);
 
         //create the adapter with layout from new_list_layout and the List<RssItem> items
         NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
