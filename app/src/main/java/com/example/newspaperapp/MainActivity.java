@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.StrictMode;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         pageSwitcher(5);
 
 
-        makeList();
+        makeNewsList();
     }
 
     private boolean checkPlayServices(){
@@ -156,6 +160,23 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new OnItemClickListenerListViewItem());
+
+    }
+
+    public void makeNewsList() {
+        // create an RSS parser
+        RssParser parser = new RssParser();
+
+        //initiate the RssItem list from the Home
+        //AUGUSTTANA_LINKS[0] is the first item in AUGUSTANA_LINKS, the feeds of Home page
+        List<RssItem> items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0]);
+
+        //create the adapter with layout from new_list_layout and the List<RssItem> items
+        NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
+
+        //invoke the news list
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
 
     }
 }
