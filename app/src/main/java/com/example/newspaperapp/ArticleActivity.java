@@ -27,13 +27,6 @@ public class ArticleActivity extends Activity {
         link = bundle.getString(Variables.LINK);
         webView = (WebView) findViewById(R.id.webViewNews);
 
-        webView.getSettings().setSupportZoom(true);
-        webView.setInitialScale(1);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        webView.setScrollbarFadingEnabled(false);
-
         webView.setWebViewClient(new ArticleWebViewClient());
 
         dialog = ProgressDialog.show(this, "", "Loading ...");

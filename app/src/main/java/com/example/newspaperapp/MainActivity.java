@@ -184,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(Variables.LINK, items.get(position).getLink());
                 startActivity(intent);
 
-
             }
         });
 

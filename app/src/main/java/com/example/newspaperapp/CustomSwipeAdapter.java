@@ -1,6 +1,7 @@
 package com.example.newspaperapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
     private Context ctx;
     private LayoutInflater layoutInflater;
     private List<RssItem> items;
+    private int position;
 
     public CustomSwipeAdapter(Context ctx, List<RssItem> items){
         this.ctx = ctx;
@@ -43,6 +45,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         String title = items.get(position).getTitle();
+        this.position=position;
         if(title.equals("Augustana Observer") || title.equals("title")){
             items.remove(position);
             title = items.get(position).getTitle();
@@ -67,7 +70,9 @@ public class CustomSwipeAdapter extends PagerAdapter {
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Toast.makeText(ctx,"You clicked an awesome dog", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ctx, ArticleActivity.class);
+            intent.putExtra(Variables.LINK, items.get(position).getLink());
+            ctx.startActivity(intent);
         }
     };
 }
