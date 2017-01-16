@@ -151,17 +151,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void makeList(){
-        ObjectItem[] data = (new DumbData()).getObjectItemData();
 
-        CustomListAdapter adapter = new CustomListAdapter(this, R.layout.list_layout, data);
-
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new OnItemClickListenerListViewItem());
-
-    }
 
     public void makeNewsList() {
         // create an RSS parser
