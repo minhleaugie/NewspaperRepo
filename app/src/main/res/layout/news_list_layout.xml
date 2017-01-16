@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:paddingTop="5dp"
     android:paddingBottom="5dp"
     android:weightSum="5"
@@ -11,20 +11,20 @@
     >
 
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
         android:id="@+id/imageViewIcon"
         android:layout_gravity="center_vertical"
-        android:layout_weight="4"
         android:src="@drawable/augie_observer"
+
         />
 
     <TextView
         android:id="@+id/textViewNews"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:text="@string/augie_observer"/>
+        android:text="@string/augie_observer"
+        />
 
 </LinearLayout>

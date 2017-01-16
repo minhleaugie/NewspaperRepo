@@ -24,7 +24,7 @@ public class ArticleActivity extends Activity {
         setContentView(R.layout.activity_article);
         Bundle bundle = getIntent().getExtras();
         setTitle(R.string.app_name);
-        link = bundle.getString("link");
+        link = bundle.getString(Variables.LINK);
         webView = (WebView) findViewById(R.id.webViewNews);
 
         webView.getSettings().setSupportZoom(true);
