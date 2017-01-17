@@ -29,6 +29,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StartScreen"/>
         </activity>
+        <activity android:name=".Search">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StartScreen"/>
+        </activity>
+
 
         <!-- GCM Receiver -->
         <receiver

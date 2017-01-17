@@ -19,7 +19,7 @@ public class StartScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mainActivity = new Intent(StartScreen.this,MainActivity.class);
+                Intent mainActivity = new Intent(StartScreen.this,Search.class);
                 StartScreen.this.startActivity(mainActivity);
                 StartScreen.this.finish();
             }
