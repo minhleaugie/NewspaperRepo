@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Timer timer;
     int page;
     private List<RssItem> items;
-    private Button b1;
+    private ImageButton searchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +93,14 @@ public class MainActivity extends AppCompatActivity {
         page = 0;
         pageSwitcher(5);
 
-
+        searchButton = (ImageButton) findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchIntent = new Intent(MainActivity.this, Search.class);
+                startActivity(searchIntent);
+            }
+        });
     }
 
     private boolean checkPlayServices(){
