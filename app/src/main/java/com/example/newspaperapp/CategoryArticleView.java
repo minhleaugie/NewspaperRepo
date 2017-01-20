@@ -29,7 +29,7 @@ public class CategoryArticleView extends AppCompatActivity {
         NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
 
         //invoke the news list
-        ListView listView = (ListView) findViewById(R.id.list_view);
+        ListView listView = (ListView) findViewById(R.id.list_view2);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
