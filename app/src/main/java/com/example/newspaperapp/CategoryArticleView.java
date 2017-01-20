@@ -16,7 +16,7 @@ public class CategoryArticleView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_view);
+        setContentView(R.layout.activity_category_article_view);
 
         // create an RSS parser
         RssParser parser = new RssParser();

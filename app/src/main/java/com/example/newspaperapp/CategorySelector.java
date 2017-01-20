@@ -15,7 +15,7 @@ public class CategorySelector extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_category_selector);
         items = (ArrayList<RssItem>) getIntent().getSerializableExtra("mylist");
 
         sports.setOnClickListener(new View.OnClickListener() {

@@ -50,7 +50,7 @@ public class RssItem {
     }
 
     public void addCategoryTag(String tag){
-        String trimmedTag = tag.substring(tag.indexOf("[")+1,tag.indexOf("]"));
+        String trimmedTag = tag.substring(tag.indexOf("[",tag.indexOf("["))+1,tag.indexOf("]"));
         tags.add(trimmedTag);
     }
 

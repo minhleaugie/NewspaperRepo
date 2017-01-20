@@ -18,6 +18,7 @@ public class RssHandler extends DefaultHandler{
     public static final String DESCRIPTION = "description";
     public static final String LINK = "link";
     public static final String DATE = "pubdate";
+    public static final String CATEGORY = "category";
 
     private RssItem item;
     private List<RssItem> itemList = new ArrayList<RssItem>();
@@ -52,6 +53,8 @@ public class RssHandler extends DefaultHandler{
                 item.setLink(sBuilder.toString().trim());
             } else  if (localName.equalsIgnoreCase(DATE)) {
                 item.setDate(sBuilder.toString().trim());
+            } else if (localName.equalsIgnoreCase(CATEGORY)){
+                item.addCategoryTag(sBuilder.toString().trim());
             }
             sBuilder = new StringBuilder();
         }
