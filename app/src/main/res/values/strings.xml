@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Augustana Observer</string>
     <string name="augie_observer">Augie Observer</string>
+    <string name="sports_category">Sports</string>
+    <string name="news_category">News</string>
+    <string name="arts_category">Arts &amp; Entertainment</string>
+    <string name="opinions_category">Opinions</string>
+    <string name="features_category">Features</string>
 </resources>

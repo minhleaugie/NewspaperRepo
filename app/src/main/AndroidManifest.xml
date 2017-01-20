@@ -27,14 +27,13 @@
         <activity android:name=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StartScreen"/>
+                android:value=".StartScreen" />
         </activity>
         <activity android:name=".Search">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StartScreen"/>
+                android:value=".StartScreen" />
         </activity>
-
 
         <!-- GCM Receiver -->
         <receiver
@@ -64,7 +63,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ArticleActivity"></activity>
+        <activity android:name=".ArticleActivity" />
+        <activity android:name=".CategorySelector" />
+        <activity android:name=".CategoryArticleView"></activity>
     </application>
 
 </manifest>

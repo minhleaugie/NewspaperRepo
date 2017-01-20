@@ -13,7 +13,12 @@ public class Variables {
 
     //Augustana College Observer
     public static final String[] AUGUSTANA_CATEGORIES = {"Home"};
-    public static final String[] AUGUSTANA_LINKS = {"http://www.augustanaobserver.com/feed/"};
+    public static final String[] AUGUSTANA_LINKS = {"http://www.augustanaobserver.com/feed/",
+            "http://www.augustanaobserver.com/category/news/feed/",
+            "http://www.augustanaobserver.com/category/arts-entertainment//feed/",
+            "http://www.augustanaobserver.com/category/features/feed/",
+            "http://www.augustanaobserver.com/category/opinions/feed/",
+            "http://www.augustanaobserver.com/category/sports/feed/"};
 
 
 
