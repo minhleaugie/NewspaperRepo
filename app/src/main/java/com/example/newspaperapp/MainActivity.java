@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     int page;
     private List<RssItem> items;
     private ImageButton searchButton;
+    private ImageButton categoryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(searchIntent);
             }
         });
+
+        categoryButton = (ImageButton) findViewById(R.id.category_button);
+        categoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent categorySelector = new Intent(MainActivity.this, CategorySelector.class);
+                startActivity(categorySelector);
+            }
+        });
+
     }
 
     private boolean checkPlayServices(){
