@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onReceive(Context context, Intent intent) {
                 if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_SUCCESS)) {
                     String token = intent.getStringExtra("token");
-                    Toast.makeText(getApplicationContext(), "Registration token:" + token, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Registration token:" + token, Toast.LENGTH_LONG).show();
                 } else if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ERROR)) {
                     Toast.makeText(getApplicationContext(), "GCM registration error!", Toast.LENGTH_LONG).show();
                 } else {
