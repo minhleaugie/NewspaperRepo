@@ -5,11 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.StrictMode;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -94,21 +97,33 @@ public class MainActivity extends AppCompatActivity {
         page = 0;
         pageSwitcher(5);
 
-        searchButton = (ImageButton) findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent searchIntent = new Intent(MainActivity.this, Search.class);
-                startActivity(searchIntent);
-            }
-        });
 
-        categoryButton = (ImageButton) findViewById(R.id.category_button);
-        categoryButton.setOnClickListener(new View.OnClickListener() {
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent categorySelector = new Intent(MainActivity.this, CategorySelector.class);
-                startActivity(categorySelector);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        break;
+
+                    case R.id.action_category:
+
+                        break;
+
+
+
+                    case R.id.action_search:
+                        Intent searchIntent = new Intent(MainActivity.this, Search.class);
+                        startActivity(searchIntent);
+                        break;
+
+
+
+                }
+                return false;
             }
         });
 
