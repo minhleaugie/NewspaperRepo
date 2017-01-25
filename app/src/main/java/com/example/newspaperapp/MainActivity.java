@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.action_category:
-
+                        Intent categoryIntent = new Intent(MainActivity.this, CategorySelector.class);
+                        startActivity(categoryIntent);
                         break;
 
 

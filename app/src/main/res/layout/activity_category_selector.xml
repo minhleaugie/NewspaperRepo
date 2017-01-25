@@ -5,11 +5,8 @@
     android:id="@+id/activity_category"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.newspaperapp.CategorySelector">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,27 +25,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
-            android:layout_marginTop="12dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="230dp"
-        android:id="@+id/opinionsLayout">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/opinionsImage"/>
-
-        <TextView
-            android:text="@string/opinions_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/opinionsText"
             android:layout_marginTop="12dp" />
     </LinearLayout>
 
@@ -112,6 +88,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/featuresText"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/opinionsLayout"
+        android:layout_alignTop="@+id/sportsLayout"
+        android:layout_alignLeft="@+id/artsLayout"
+        android:layout_alignStart="@+id/artsLayout">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/sports_category_image"
+            android:id="@+id/opinionsImage"/>
+
+        <TextView
+            android:text="@string/opinions_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/opinionsText"
             android:layout_marginTop="12dp" />
     </LinearLayout>
 

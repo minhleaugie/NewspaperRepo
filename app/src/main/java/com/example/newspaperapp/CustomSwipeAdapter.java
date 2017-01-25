@@ -20,8 +20,6 @@ import java.util.List;
 public class CustomSwipeAdapter extends PagerAdapter {
     private int[] image_resources = {R.drawable.dog1, R.drawable.dog2, R.drawable.dog3, R.drawable.dog4,
             R.drawable.dog5, R.drawable.dog6, R.drawable.dog7};
-    private String reallyBigString = "this is a really big String. let's see if the text will wrap or if the app will explode. please don't explode, though";
-    private String[] image_names = {"This dog is awesome", "This dog is awesome, too", "blahblah", reallyBigString, "how big is this array", "it's 7","this is the last"};
     private Context ctx;
     private LayoutInflater layoutInflater;
     private List<RssItem> items;
