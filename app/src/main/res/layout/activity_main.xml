@@ -7,14 +7,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@android:color/background_light">
+    android:background="@android:color/transparent">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         android:weightSum="2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
         <android.support.v7.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -52,68 +56,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".85">
+            android:layout_weight=".8">
+
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/list_view">
             </ListView>
 
         </LinearLayout>
 
+
         <LinearLayout
-            android:id="@+id/bottomBar"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".15"
-            android:background="@color/colorPrimaryDark">
+            android:layout_weight=".2"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryDark"
 
-            <ImageButton
-                android:layout_width="wrap_content"
+            >
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@android:drawable/btn_star"
-                android:id="@+id/imageButton"
-                android:layout_weight="1"
-                android:background="@android:color/transparent" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@android:drawable/btn_star_big_on"
-                android:id="@+id/category_button"
-                android:layout_weight="1"
-                android:background="@android:color/transparent" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@android:drawable/ic_delete"
-                android:id="@+id/imageButton3"
-                android:layout_weight="1"
-                android:background="@android:color/transparent" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@android:drawable/ic_input_add"
-                android:id="@+id/imageButton4"
-                android:layout_weight="1"
-                android:background="@android:color/transparent" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@android:drawable/ic_search_category_default"
-                android:id="@+id/search_button"
-                android:layout_weight="1"
-                android:background="@android:color/transparent" />
+                app:itemBackground="@color/blue"
+                app:itemIconTint="@drawable/nav_item_color_state"
+                app:itemTextColor="@drawable/nav_item_color_state"
+                app:menu="@menu/bottom_navigation_main" />
         </LinearLayout>
+
+
     </LinearLayout>
 
 </RelativeLayout>

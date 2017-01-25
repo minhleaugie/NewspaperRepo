@@ -6,4 +6,9 @@
     <string name="arts_category">Arts &amp; Entertainment</string>
     <string name="opinions_category">Opinions</string>
     <string name="features_category">Features</string>
+    <string name="text_home">Home</string>
+    <string name="text_category">Categories</string>
+    <string name="text_search">Search</string>
+
+
 </resources>
