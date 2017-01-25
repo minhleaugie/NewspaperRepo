@@ -53,9 +53,9 @@ public class RssHandler extends DefaultHandler{
                 item.setLink(sBuilder.toString().trim());
             } else  if (localName.equalsIgnoreCase(DATE)) {
                 item.setDate(sBuilder.toString().trim());
-            } //else if (localName.equalsIgnoreCase(CATEGORY)){
-                //item.addCategoryTag(sBuilder.toString().trim());
-            //}
+            } else if (localName.equalsIgnoreCase(CATEGORY)){
+                item.addCategoryTag(sBuilder.toString().trim());
+            }
             sBuilder = new StringBuilder();
         }
     }
