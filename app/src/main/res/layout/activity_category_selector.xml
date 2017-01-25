@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="40dp">
+        android:layout_marginLeft="40dp"
+        android:id="@+id/sportsLayout">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -35,7 +36,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="230dp">
+        android:layout_marginLeft="230dp"
+        android:id="@+id/opinionsLayout">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -55,7 +57,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="30dp">
+        android:layout_marginLeft="30dp"
+        android:id="@+id/newsLayout">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -75,7 +78,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="230dp">
+        android:layout_marginLeft="230dp"
+        android:id="@+id/artsLayout">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -95,7 +99,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="370dp"
-        android:layout_marginLeft="130dp">
+        android:layout_marginLeft="130dp"
+        android:id="@+id/featuresLayout">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"

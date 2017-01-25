@@ -3,6 +3,7 @@ package com.example.newspaperapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,7 +24,8 @@ public class CategoryArticleView extends AppCompatActivity {
 
         //initiate the RssItem list from the Home
         //AUGUSTTANA_LINKS[0] is the first item in AUGUSTANA_LINKS, the feeds of Home page
-        items = parser.getNewsList(getIntent().getStringExtra(Variables.LINK));
+        int linkChoice = getIntent().getIntExtra(Variables.LINK,0);
+        items = parser.getNewsList(Variables.AUGUSTANA_LINKS[linkChoice]);
 
         //create the adapter with layout from new_list_layout and the List<RssItem> items
         NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
