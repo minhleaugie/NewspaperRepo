@@ -4,7 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.LocalBroadcastManager;
@@ -23,6 +26,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton searchButton;
     private ImageButton categoryButton;
 
+    String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +61,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_SUCCESS)) {
-                    String token = intent.getStringExtra("token");
+                    token = intent.getStringExtra("token");
                     //Toast.makeText(getApplicationContext(), "Registration token:" + token, Toast.LENGTH_LONG).show();
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                    if(!preferences.getBoolean("Registered", false)) {
+                        RequestTask requestTask = new RequestTask();
+                        requestTask.doInBackground();
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putBoolean("Registered", true).apply();
+                    }
                 } else if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ERROR)) {
                     Toast.makeText(getApplicationContext(), "GCM registration error!", Toast.LENGTH_LONG).show();
                 } else {
@@ -213,5 +227,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private class RequestTask extends AsyncTask<String, String, String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String response = "";
+            try{
+                URL url = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token="+token);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                    //do input
+                    response = "SUCCESS";
+                    Toast.makeText(getApplicationContext(), "We did it!", Toast.LENGTH_LONG).show();
+                } else {
+                    //we failed yall
+                    response = "FAIL";
+                    Toast.makeText(getApplicationContext(), "We didn't do it!", Toast.LENGTH_LONG).show();
+                }
+            }catch(Exception e){
+
+            }
+            return response;
+        }
     }
 }
