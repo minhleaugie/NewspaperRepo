@@ -1,116 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_category"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.newspaperapp.CategorySelector">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.example.newspaperapp.CategorySelector"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="40dp"
-        android:id="@+id/sportsLayout">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/sportsImage"/>
 
-        <TextView
-            android:text="@string/sports_category"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:layout_marginTop="12dp" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/newsLayout">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/sports_category_image"
+                android:id="@+id/newsImage"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="30dp"
-        android:id="@+id/newsLayout">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/newsImage"/>
+            <TextView
+                android:text="@string/news_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newsText"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
 
-        <TextView
-            android:text="@string/news_category"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/newsText"
-            android:layout_marginTop="12dp" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="230dp"
+            android:id="@+id/artsLayout">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/sports_category_image"
+                android:id="@+id/artsImage"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="230dp"
-        android:id="@+id/artsLayout">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/artsImage"/>
+            <TextView
+                android:text="@string/arts_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/artsText"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
 
-        <TextView
-            android:text="@string/arts_category"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/artsText"
-            android:layout_marginTop="12dp" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:layout_marginTop="370dp"
+            android:layout_marginLeft="130dp"
+            android:id="@+id/featuresLayout">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/sports_category_image"
+                android:id="@+id/featuresImage"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="370dp"
-        android:layout_marginLeft="130dp"
-        android:id="@+id/featuresLayout">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/featuresImage"/>
+            <TextView
+                android:text="@string/features_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/featuresText"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
 
-        <TextView
-            android:text="@string/features_category"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/featuresText"
-            android:layout_marginTop="12dp" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:id="@+id/opinionsLayout"
+            android:layout_alignTop="@+id/sportsLayout"
+            android:layout_alignLeft="@+id/artsLayout"
+            android:layout_alignStart="@+id/artsLayout">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/sports_category_image"
+                android:id="@+id/opinionsImage"/>
 
-    <LinearLayout
+            <TextView
+                android:text="@string/opinions_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/opinionsText"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+        -->
+
+    <Button
+        android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/opinionsLayout"
-        android:layout_alignTop="@+id/sportsLayout"
-        android:layout_alignLeft="@+id/artsLayout"
-        android:layout_alignStart="@+id/artsLayout">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/opinionsImage"/>
+        android:id="@+id/button6" />
 
-        <TextView
-            android:text="@string/opinions_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/opinionsText"
-            android:layout_marginTop="12dp" />
-    </LinearLayout>
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button5" />
 
-</RelativeLayout>
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3" />
+
+    <Button
+        android:text="Button"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2" />
+</GridLayout>
