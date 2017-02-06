@@ -235,7 +235,8 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String response = "";
             try{
-                URL url = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token="+token);
+                //this should probably be a constant
+                URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){

@@ -17,8 +17,8 @@ public class CategorySelector extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_selector);
-
+        setContentView(R.layout.category_selector);
+/**
         news= (LinearLayout) findViewById(R.id.newsLayout);
         news.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,7 @@ public class CategorySelector extends AppCompatActivity {
                 openCategory(5);
             }
         });
+ **/
     }
 
     public void openCategory(int linkChoice) {
