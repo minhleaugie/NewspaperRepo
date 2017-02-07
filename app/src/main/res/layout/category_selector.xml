@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="2">
 
@@ -19,8 +20,17 @@
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/imageButton" />
+            app:srcCompat="@drawable/news_category_image"
+            android:id="@+id/newsButton" />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/features_category_image"
+            android:id="@+id/featuresButton" />
 
         <ImageButton
             android:layout_width="match_parent"
@@ -29,15 +39,8 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/imageButton2" />
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/imageButton3" />
+            android:id="@+id/sportsButton" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -53,16 +56,17 @@
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/imageButton4" />
+            app:srcCompat="@drawable/arts_category_image"
+            android:id="@+id/artsButton" />
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/imageButton5" />
+            app:srcCompat="@drawable/opinions_category_image"
+            android:id="@+id/opinionsButton" />
+
     </LinearLayout>
 
 </LinearLayout>

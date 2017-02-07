@@ -5,21 +5,20 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
 public class CategorySelector extends AppCompatActivity {
-    //ImageView sports, news, arts, features, opinions;
-    LinearLayout news, arts, features, opinions, sports;
+    ImageButton news, arts, features, opinions, sports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_selector);
-/**
-        news= (LinearLayout) findViewById(R.id.newsLayout);
+
+        news= (ImageButton) findViewById(R.id.newsButton);
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +26,7 @@ public class CategorySelector extends AppCompatActivity {
             }
         });
 
-        arts = (LinearLayout) findViewById(R.id.artsLayout);
+        arts = (ImageButton) findViewById(R.id.artsButton);
         arts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +34,7 @@ public class CategorySelector extends AppCompatActivity {
             }
         });
 
-        features = (LinearLayout) findViewById(R.id.featuresLayout);
+        features = (ImageButton) findViewById(R.id.featuresButton);
         features.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +42,7 @@ public class CategorySelector extends AppCompatActivity {
             }
         });
 
-        opinions = (LinearLayout) findViewById(R.id.opinionsLayout);
+        opinions = (ImageButton) findViewById(R.id.opinionsButton);
         opinions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,14 +50,13 @@ public class CategorySelector extends AppCompatActivity {
             }
         });
 
-        sports = (LinearLayout) findViewById(R.id.sportsLayout);
+        sports = (ImageButton) findViewById(R.id.sportsButton);
         sports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openCategory(5);
             }
         });
- **/
     }
 
     public void openCategory(int linkChoice) {
