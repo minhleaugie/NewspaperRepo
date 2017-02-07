@@ -236,11 +236,11 @@ public class MainActivity extends AppCompatActivity {
             String response = "";
             try{
                 //this should probably be a constant
-                URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
+                  URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
+                  HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                  conn.setRequestMethod("GET");
 
-                URL demoURL = new URL("http://lovelace.augustana.edu/index.php/wp-json/apnwp/register?os_typ=android&device="+token);
+                URL demoURL = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token="+token);
                 HttpURLConnection demoConn = (HttpURLConnection) demoURL.openConnection();
                 demoConn.setRequestMethod("GET");
 

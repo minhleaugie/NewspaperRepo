@@ -40,10 +40,14 @@ public class GCMPushReceiverService extends GcmListenerService {
         title = data.getString("title");
         //displaying a notification with the data
 
+        Log.w("Testing", "do we even get here?");
+
+
         //get the corresponding article
         new FindURLTask().execute(Variables.AUGUSTANA_LINKS[0]);
 
         //sendNotification(message, title, smallIcon);
+        Log.w("Testing", "do we even get here? after async");
     }
 
     private void openBundle(Bundle bun){
