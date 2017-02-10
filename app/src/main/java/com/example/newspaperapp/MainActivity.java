@@ -69,9 +69,11 @@ public class MainActivity extends AppCompatActivity {
                         requestTask.doInBackground();
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putBoolean("Registered", true).apply();
+
                     }
                 } else if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ERROR)) {
                     Toast.makeText(getApplicationContext(), "GCM registration error!", Toast.LENGTH_LONG).show();
+                    Log.w("Testing", "didn't connect to GCM");
                 } else {
                     Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_LONG).show();
                 }
@@ -209,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
         //initiate the RssItem list from the Home
         //AUGUSTTANA_LINKS[0] is the first item in AUGUSTANA_LINKS, the feeds of Home page
-        items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0]);
+        items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0], false);
 
         //create the adapter with layout from new_list_layout and the List<RssItem> items
         NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
@@ -236,18 +238,19 @@ public class MainActivity extends AppCompatActivity {
             String response = "";
             try{
                 //this should probably be a constant
-                  URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
-                  HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                  conn.setRequestMethod("GET");
+                  //URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
+                 // HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                  //conn.setRequestMethod("GET");
 
                 URL demoURL = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token="+token);
                 HttpURLConnection demoConn = (HttpURLConnection) demoURL.openConnection();
                 demoConn.setRequestMethod("GET");
 
-                if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                if(demoConn.getResponseCode() == HttpURLConnection.HTTP_OK){
                     //do input
                     response = "SUCCESS";
                     Toast.makeText(getApplicationContext(), "We did it!", Toast.LENGTH_LONG).show();
+                    Log.w("Testing", "connected");
                 } else {
                     //we failed yall
                     response = "FAIL";

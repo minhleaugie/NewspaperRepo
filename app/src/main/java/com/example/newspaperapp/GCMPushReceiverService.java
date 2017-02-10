@@ -86,7 +86,7 @@ public class GCMPushReceiverService extends GcmListenerService {
     private class FindURLTask extends AsyncTask<String, Void, List<RssItem>> {
         protected List<RssItem> doInBackground(String[] urls) {
             RssParser parser = new RssParser();
-            return parser.getNewsList(urls[0]);
+            return parser.getNewsList(urls[0], true);
         }
         protected void onPostExecute(List<RssItem> items){
             url = items.get(0).getLink();
