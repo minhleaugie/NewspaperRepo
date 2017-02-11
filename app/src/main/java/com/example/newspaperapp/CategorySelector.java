@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -57,6 +58,34 @@ public class CategorySelector extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openCategory(5);
+            }
+        });
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Intent homeIntent = new Intent(CategorySelector.this, MainActivity.class);
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                        startActivity(homeIntent);
+                        break;
+
+                    case R.id.action_category:
+                        break;
+
+                    case R.id.action_search:
+                        Intent searchIntent = new Intent(CategorySelector.this, Search.class);
+                        startActivity(searchIntent);
+                        break;
+
+
+
+                }
+                return false;
             }
         });
     }
