@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     Timer timer;
     int page;
     private List<RssItem> items;
+    private List<RssItem> featuredItems;
     private ImageButton searchButton;
     private ImageButton categoryButton;
 
@@ -81,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
         };
 
         if(checkPlayServices()){
-            Intent itent = new Intent(this, GCMRegistrationIntentService.class);
-            startService(itent);
+            Intent intent = new Intent(this, GCMRegistrationIntentService.class);
+            startService(intent);
         }
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
@@ -147,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     private boolean checkPlayServices(){
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());

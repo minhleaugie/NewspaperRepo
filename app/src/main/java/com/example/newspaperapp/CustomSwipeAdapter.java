@@ -3,6 +3,7 @@ package com.example.newspaperapp;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
         this.items = items;
     }
 
+
     @Override
     public int getCount() {
         return image_resources.length;
@@ -48,6 +50,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         String title = items.get(position).getTitle();
         this.position=position;
+        image = LoadImageFromWebOperations(items.get(position).getImageURL());
         if(title.equals("Augustana Observer") || title.equals("title")){
             items.remove(position);
             title = items.get(position).getTitle();
@@ -55,7 +58,6 @@ public class CustomSwipeAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View item_view = layoutInflater.inflate(R.layout.swipe_layout, container, false);
         ImageView imageView = (ImageView) item_view.findViewById(R.id.image_view);
-        image = LoadImageFromWebOperations(items.get(position).getImageURL());
         if(image != null) {
             imageView.setImageDrawable(image);
         }
