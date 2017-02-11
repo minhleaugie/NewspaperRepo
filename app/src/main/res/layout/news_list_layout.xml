@@ -16,7 +16,7 @@
         android:id="@+id/imageViewIcon"
         android:layout_gravity="center_vertical"
         android:src="@drawable/augie_observer"
-
+        android:padding="5dp"
         />
 
     <TextView

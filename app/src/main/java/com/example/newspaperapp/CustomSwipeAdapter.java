@@ -2,6 +2,7 @@ package com.example.newspaperapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -24,6 +27,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     private List<RssItem> items;
     private int position;
+    private Drawable image;
 
     public CustomSwipeAdapter(Context ctx, List<RssItem> items){
         this.ctx = ctx;
@@ -51,7 +55,10 @@ public class CustomSwipeAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View item_view = layoutInflater.inflate(R.layout.swipe_layout, container, false);
         ImageView imageView = (ImageView) item_view.findViewById(R.id.image_view);
-        imageView.setImageResource(image_resources[position]);
+        image = LoadImageFromWebOperations(items.get(position).getImageURL());
+        if(image != null) {
+            imageView.setImageDrawable(image);
+        }
         imageView.setOnClickListener(listener);
         Button button = (Button) item_view.findViewById(R.id.text_view);
         button.setText(title);
@@ -73,4 +80,14 @@ public class CustomSwipeAdapter extends PagerAdapter {
             ctx.startActivity(intent);
         }
     };
+
+    public static Drawable LoadImageFromWebOperations(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
