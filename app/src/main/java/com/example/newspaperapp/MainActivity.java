@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(MainActivity.this, CategorySelector.class);
                         startActivity(categoryIntent);
+                        overridePendingTransition(R.anim.display_in, R.anim.display_out);
                         break;
 
 
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_search:
                         Intent searchIntent = new Intent(MainActivity.this, Search.class);
                         startActivity(searchIntent);
+                        overridePendingTransition(R.anim.display_in, R.anim.display_out);
                         break;
 
 
@@ -225,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ArticleActivity.class);
                 intent.putExtra(Variables.LINK, items.get(position).getLink());
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
             }
         });
@@ -238,9 +241,10 @@ public class MainActivity extends AppCompatActivity {
             String response = "";
             try{
                 //this should probably be a constant
-                  //URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
+                 // URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
                  // HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                  //conn.setRequestMethod("GET");
+                 // conn.setRequestMethod("GET");
+
 
                 URL demoURL = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token="+token);
                 HttpURLConnection demoConn = (HttpURLConnection) demoURL.openConnection();
@@ -261,5 +265,10 @@ public class MainActivity extends AppCompatActivity {
             }
             return response;
         }
+    }
+
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(R.anim.main_in, R.anim.main_out);
     }
 }

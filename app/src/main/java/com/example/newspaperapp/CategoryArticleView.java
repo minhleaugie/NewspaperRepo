@@ -55,7 +55,13 @@ public class CategoryArticleView extends AppCompatActivity {
                 Intent intent = new Intent(CategoryArticleView.this, ArticleActivity.class);
                 intent.putExtra(Variables.LINK, items.get(position).getLink());
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
     }
 }
