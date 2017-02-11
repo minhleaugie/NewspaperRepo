@@ -15,18 +15,10 @@
         android:layout_weight=".01">
 
         <ImageView
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/observer_logo">
+            android:src="@drawable/title_bar_image">
         </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/app_name"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark">
-        </TextView>
 
     </android.support.v7.widget.Toolbar>
 

@@ -1,71 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="2">
 
 
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_weight=".01">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/title_bar_image">
+        </ImageView>
+
+    </android.support.v7.widget.Toolbar>
+
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:padding="20dp">
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
+            android:padding="2dp"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/news_category_image"
-            android:id="@+id/newsButton" />
+            android:id="@+id/newsButton"
+            android:background="@drawable/click_image_selector" />
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
+            android:padding="2dp"
             app:srcCompat="@drawable/features_category_image"
-            android:id="@+id/featuresButton" />
+            android:id="@+id/featuresButton"
+            android:background="@drawable/click_image_selector" />
+
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
+            android:padding="2dp"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/sports_category_image"
-            android:id="@+id/sportsButton" />
+            android:id="@+id/sportsButton"
+            android:background="@drawable/click_image_selector" />
+
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:weightSum="3">
+        android:weightSum="2"
+        android:padding="40dp">
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/arts_category_image"
-            android:id="@+id/artsButton" />
+            android:id="@+id/artsButton"
+            android:background="@drawable/click_image_selector"
+            android:padding="20dp"/>
+
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/opinions_category_image"
-            android:id="@+id/opinionsButton" />
+            android:id="@+id/opinionsButton"
+            android:background="@drawable/click_image_selector"
+            android:padding="20dp"/>
+
 
     </LinearLayout>
 
