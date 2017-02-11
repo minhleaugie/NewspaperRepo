@@ -125,25 +125,29 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         break;
-
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(MainActivity.this, CategorySelector.class);
                         startActivity(categoryIntent);
                         overridePendingTransition(R.anim.display_in, R.anim.display_out);
                         break;
-
-
-
                     case R.id.action_search:
                         Intent searchIntent = new Intent(MainActivity.this, Search.class);
+                        searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
                         overridePendingTransition(R.anim.display_in, R.anim.display_out);
                         break;
-
-
-
                 }
                 return false;
+            }
+        });
+
+        ImageButton toAbout = (ImageButton) findViewById(R.id.toAbout);
+
+        toAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent aboutIntent = new Intent(MainActivity.this, About.class);
+                startActivity(aboutIntent);
             }
         });
 

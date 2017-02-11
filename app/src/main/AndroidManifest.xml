@@ -67,6 +67,7 @@
         <activity android:name=".ArticleActivity" />
         <activity android:name=".CategorySelector" />
         <activity android:name=".CategoryArticleView"></activity>
+        <activity android:name=".About"/>
     </application>
 
 </manifest>

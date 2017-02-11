@@ -54,6 +54,7 @@ public class ArticleActivity extends Activity {
                         break;
                     case R.id.action_search:
                         Intent searchIntent = new Intent(ArticleActivity.this, Search.class);
+                        searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
                         break;
                 }

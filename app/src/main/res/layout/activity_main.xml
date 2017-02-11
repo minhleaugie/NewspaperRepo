@@ -78,6 +78,7 @@
         android:layout_height="50dp"
         android:layout_alignRight="@+id/main_linear_layout"
         android:src="@android:drawable/ic_menu_info_details"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        android:id="@+id/toAbout"/>
 
 </RelativeLayout>
