@@ -84,6 +84,7 @@ public class Search extends AppCompatActivity {
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(Search.this, CategorySelector.class);
                         startActivity(categoryIntent);
+                        overridePendingTransition(R.anim.main_in, R.anim.main_out);
                         break;
                     case R.id.action_search:
                         break;
@@ -128,7 +129,13 @@ public class Search extends AppCompatActivity {
                 Intent intent = new Intent(Search.this, ArticleActivity.class);
                 intent.putExtra(Variables.LINK, items.get(position).getLink());
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
+    }
+
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(R.anim.display_in, R.anim.display_out);
     }
 }

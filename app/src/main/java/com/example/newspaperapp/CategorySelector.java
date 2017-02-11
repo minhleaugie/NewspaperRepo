@@ -2,6 +2,8 @@ package com.example.newspaperapp;
 
 import android.content.Intent;
 import android.media.Image;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -63,5 +65,6 @@ public class CategorySelector extends AppCompatActivity {
         Intent intent = new Intent(CategorySelector.this, CategoryArticleView.class);
         intent.putExtra(Variables.LINK, linkChoice);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }

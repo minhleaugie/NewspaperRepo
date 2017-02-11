@@ -84,5 +84,20 @@ public class ArticleActivity extends Activity {
             super.onPageFinished(view, url);
         }
     }
+
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    protected void onStop() {
+        super.onStop();
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
+    }
 }
 
