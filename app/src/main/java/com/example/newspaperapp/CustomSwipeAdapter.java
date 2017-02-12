@@ -2,6 +2,8 @@ package com.example.newspaperapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v4.view.PagerAdapter;
@@ -50,16 +52,20 @@ public class CustomSwipeAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         String title = items.get(position).getTitle();
         this.position=position;
-        image = LoadImageFromWebOperations(items.get(position).getImageURL());
-        if(title.equals("Augustana Observer") || title.equals("title") || image == null){
+        if(title.equals("Augustana Observer") || title.equals("title")){
             items.remove(position);
             title = items.get(position).getTitle();
         }
         layoutInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View item_view = layoutInflater.inflate(R.layout.swipe_layout, container, false);
         ImageView imageView = (ImageView) item_view.findViewById(R.id.image_view);
-        if(image != null) {
-            imageView.setImageDrawable(image);
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(items.get(position).getImageURL()).getContent());
+            if(bitmap != null) {
+                imageView.setImageBitmap(bitmap);
+            }
+        } catch (Exception e) {
+
         }
         imageView.setOnClickListener(listener);
         Button button = (Button) item_view.findViewById(R.id.text_view);
@@ -83,18 +89,4 @@ public class CustomSwipeAdapter extends PagerAdapter {
         }
     };
 
-    /**
-     * This method takes a string URL and converts it to a Drawable.
-     * @param url
-     * @return Drawable of the article image
-     */
-    public static Drawable LoadImageFromWebOperations(String url) {
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            return d;
-        } catch (Exception e) {
-            return null;
-        }
-    }
 }
