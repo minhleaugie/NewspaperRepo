@@ -8,8 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by andrewbainter13 on 2/11/2017.
+ * Displays about screen.
  */
 
 public class About extends AppCompatActivity {
@@ -20,14 +23,24 @@ public class About extends AppCompatActivity {
 
         setContentView(R.layout.about_screen);
 
-        TextView textView = (TextView) findViewById(R.id.about_textview);
+        // instantiates text views
+        TextView titleText = (TextView) findViewById(R.id.title);
+        TextView devText = (TextView) findViewById(R.id.developers);
+        TextView supText = (TextView) findViewById(R.id.supervisor);
+        TextView ackText = (TextView) findViewById(R.id.acknowledgments);
 
-        textView.setText("We're super awesome computer scientists.");
+        // set text views text
+        titleText.setText("Augustana Observer App Version 1.0.0");
+        devText.setText("Developers: Andrew Bainter, Lauren Johnson, Riley Moss, Minh Le");
+        supText.setText("Supervised by: Dr. Forrest Stondahl");
+        ackText.setText("Acknowledments: The Augustana Observer Faculty, Firebase, and Google Communication Services");
 
 
+        // instantiate bottom navigation bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
+        // set bottom nav bar items
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

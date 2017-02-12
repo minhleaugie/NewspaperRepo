@@ -213,7 +213,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * This method creates a list view that
+     * displays the most currently published.
+     */
     public void makeNewsList() {
         // create an RSS parser
         RssParser parser = new RssParser();
@@ -274,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
     protected void onStart() {
         super.onStart();
         overridePendingTransition(R.anim.display_in, R.anim.display_out);

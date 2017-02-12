@@ -24,10 +24,12 @@ import java.util.List;
 
 /**
  * Created by Ver on 1/16/2017.
+ * Searches RSS feed based on user input and displays related stories.
  */
 
 public class Search extends AppCompatActivity {
 
+    // data fields
     private static final String OBSERVER_SEARCH_URL="http://www.augustanaobserver.com/?s=";
 
     private EditText search;
@@ -54,6 +56,7 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        // attached listener to edit text field to detect changes to search query
         search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -69,6 +72,7 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        // instantiate bottom nav bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
@@ -94,6 +98,12 @@ public class Search extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method takes the users search query, builds and returns the String of
+     * URL for the RSS feed.
+     * @param query
+     * @return String URL for RSS feed based on user search input
+     */
     private String buildString(String query){
         try{
             String unreliableSource = URLEncoder.encode(query, "utf-8");
@@ -116,7 +126,10 @@ public class Search extends AppCompatActivity {
     }
 
 
-
+    /**
+     * This method updates the list of stories with the queried stories.
+     * @param items
+     */
     private void updateList(final List<RssItem> items){
         // create the adapter with layout from new_list_layout and the List<RssItem> items
         NewsListAdapter adapter = new NewsListAdapter(Search.this, R.layout.news_list_layout, items);
@@ -134,8 +147,10 @@ public class Search extends AppCompatActivity {
         });
     }
 
+    @Override
     protected void onStart() {
         super.onStart();
+        // transition every time the search class activity starts
         overridePendingTransition(R.anim.main_out, R.anim.main_in);
     }
 }

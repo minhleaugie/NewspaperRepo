@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by andrewbainter13 on 1/14/2017.
+ * Creates timed start sceen for opening of application.
  */
 
 public class StartScreen extends AppCompatActivity {

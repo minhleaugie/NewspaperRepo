@@ -83,6 +83,11 @@ public class CustomSwipeAdapter extends PagerAdapter {
         }
     };
 
+    /**
+     * This method takes a string URL and converts it to a Drawable.
+     * @param url
+     * @return Drawable of the article image
+     */
     public static Drawable LoadImageFromWebOperations(String url) {
         try {
             InputStream is = (InputStream) new URL(url).getContent();
