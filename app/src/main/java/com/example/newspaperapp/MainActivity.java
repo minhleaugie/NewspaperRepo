@@ -129,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(MainActivity.this, CategorySelector.class);
                         startActivity(categoryIntent);
-                        overridePendingTransition(R.anim.display_in, R.anim.display_out);
+                        overridePendingTransition(R.anim.main_out, R.anim.main_in);
                         break;
                     case R.id.action_search:
                         Intent searchIntent = new Intent(MainActivity.this, Search.class);
                         searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
-                        overridePendingTransition(R.anim.display_in, R.anim.display_out);
+                        overridePendingTransition(R.anim.main_out, R.anim.main_in);
                         break;
                 }
                 return false;
@@ -276,6 +276,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        overridePendingTransition(R.anim.main_in, R.anim.main_in);
+        overridePendingTransition(R.anim.display_in, R.anim.display_out);
     }
 }

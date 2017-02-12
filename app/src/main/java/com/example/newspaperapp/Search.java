@@ -84,7 +84,7 @@ public class Search extends AppCompatActivity {
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(Search.this, CategorySelector.class);
                         startActivity(categoryIntent);
-                        overridePendingTransition(R.anim.main_in, R.anim.main_in);
+                        overridePendingTransition(R.anim.display_in, R.anim.display_out);
                         break;
                     case R.id.action_search:
                         break;
@@ -136,6 +136,6 @@ public class Search extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        overridePendingTransition(R.anim.display_in, R.anim.display_out);
+        overridePendingTransition(R.anim.main_out, R.anim.main_in);
     }
 }
