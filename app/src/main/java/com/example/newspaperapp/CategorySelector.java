@@ -27,6 +27,8 @@ public class CategorySelector extends AppCompatActivity {
         setContentView(R.layout.category_selector);
 
         // instantiate images and set click listeners
+        // current images are just place holders until we get some
+        // from Observer. We own no rights to these images.
         news= (ImageButton) findViewById(R.id.newsButton);
         news.setOnClickListener(new View.OnClickListener() {
             @Override
