@@ -84,7 +84,7 @@ public class Search extends AppCompatActivity {
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(Search.this, CategorySelector.class);
                         startActivity(categoryIntent);
-                        overridePendingTransition(R.anim.main_in, R.anim.main_out);
+                        overridePendingTransition(R.anim.main_in, R.anim.main_in);
                         break;
                     case R.id.action_search:
                         break;

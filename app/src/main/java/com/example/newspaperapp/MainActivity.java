@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        customSwipeAdapter = new CustomSwipeAdapter(this, items);
+        RssParser parser = new RssParser();
+        customSwipeAdapter = new CustomSwipeAdapter(this, parser.getNewsList(Variables.AUGUSTANA_LINKS[3], false));
         viewPager.setAdapter(customSwipeAdapter);
         timer = new Timer();
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -275,6 +276,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        overridePendingTransition(R.anim.main_in, R.anim.main_out);
+        overridePendingTransition(R.anim.main_in, R.anim.main_in);
     }
 }

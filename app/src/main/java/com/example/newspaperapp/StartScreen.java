@@ -16,6 +16,8 @@ public class StartScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
+
+        // Creates a timed start screen and starts main activity once time is up
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

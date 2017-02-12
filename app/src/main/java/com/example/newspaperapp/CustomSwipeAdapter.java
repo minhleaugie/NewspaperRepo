@@ -51,7 +51,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
         String title = items.get(position).getTitle();
         this.position=position;
         image = LoadImageFromWebOperations(items.get(position).getImageURL());
-        if(title.equals("Augustana Observer") || title.equals("title")){
+        if(title.equals("Augustana Observer") || title.equals("title") || image == null){
             items.remove(position);
             title = items.get(position).getTitle();
         }
