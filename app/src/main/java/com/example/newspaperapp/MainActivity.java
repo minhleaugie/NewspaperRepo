@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     ViewPager viewPager;
     CustomSwipeAdapter customSwipeAdapter;
+    NewsListAdapter adapter;
     Timer timer;
+    boolean loadingTask = false;
     int page;
     private List<RssItem> items;
     private List<RssItem> additionalStories;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         footer = (RelativeLayout) findViewById(R.id.footer);
-        footer.setVisibility(View.VISIBLE);
+        footer.setVisibility(View.GONE);
         makeNewsList();
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -238,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0], false);
 
         //create the adapter with layout from new_list_layout and the List<RssItem> items
-        final NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
+        adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
 
         //invoke the news list
         final ListView listView = (ListView) findViewById(R.id.list_view);
@@ -255,15 +257,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
                 final int lastItem = firstVisibleItem + visibleItemCount;
-                if (lastItem == totalItemCount && scrollState == SCROLL_STATE_IDLE && scrollCount < 4) {
+                if (lastItem == totalItemCount && scrollState == SCROLL_STATE_IDLE && scrollCount < 4 && !loadingTask) {
+                    scrollCount++;
                     new ShowMoreInScroll().execute();
-                    if (additionalStories != null) {
-                        items.addAll(additionalStories);
-                        adapter.notifyDataSetChanged();
-                    }
                 }
             }
         });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -308,25 +308,28 @@ public class MainActivity extends AppCompatActivity {
             return response;
         }
     }
-    
+
     private class ShowMoreInScroll extends AsyncTask<Void, Void, List<RssItem>> {
         @Override
         protected void onPreExecute() {
+            loadingTask = true;
             footer.setVisibility(View.VISIBLE);
+            System.out.println("ON PRE EXECUTE");
         }
 
         @Override
         protected List<RssItem> doInBackground(Void... voids) {
             RssParser parser = new RssParser();
-            scrollCount++;
             return parser.getNewsList(Variables.AUGUSTANA_LINKS[0] + "?paged=" + scrollCount, false);
         }
 
         @Override
         protected void onPostExecute(List<RssItem> newItems) {
-            additionalStories = newItems;
-            System.out.println("ON POST EXECUTE");
+            items.addAll(newItems);
             footer.setVisibility(View.GONE);
+            adapter.notifyDataSetChanged();
+            loadingTask = false;
+            System.out.println("ON POST EXECUTE");
         }
     }
 

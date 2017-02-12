@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class StartScreen extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -26,6 +25,6 @@ public class StartScreen extends AppCompatActivity {
                 StartScreen.this.startActivity(mainActivity);
                 StartScreen.this.finish();
             }
-        }, 1500);
+        }, 1000);
     }
 }

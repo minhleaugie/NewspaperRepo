@@ -28,7 +28,7 @@ public class CategoryArticleView extends AppCompatActivity {
         //AUGUSTTANA_LINKS[0] is the first item in AUGUSTANA_LINKS, the feeds of Home page
         int linkChoice = getIntent().getIntExtra(Variables.LINK,0);
         new CategoryArticleView.SearchListTask().execute(Variables.AUGUSTANA_LINKS[linkChoice]);
-        dialog = new ProgressDialog(CategoryArticleView.this, ProgressDialog.STYLE_SPINNER).show(CategoryArticleView.this,"Getting Category...","");
+        dialog = new ProgressDialog(CategoryArticleView.this, ProgressDialog.STYLE_SPINNER).show(CategoryArticleView.this, "Getting Articles...", "");
     }
 
 
