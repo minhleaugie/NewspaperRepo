@@ -17,10 +17,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -41,9 +43,14 @@ public class MainActivity extends AppCompatActivity {
     Timer timer;
     int page;
     private List<RssItem> items;
-    private List<RssItem> featuredItems;
+    private List<RssItem> additionalStories;
     private ImageButton searchButton;
     private ImageButton categoryButton;
+    private int scrollCount = 2;
+    private int firstVisibleItem = 0;
+    private int visibleItemCount = 0;
+    private int totalItemCount = 0;
+    private RelativeLayout footer;
 
     String token;
 
@@ -54,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
 
+        footer = (RelativeLayout) findViewById(R.id.footer);
+        footer.setVisibility(View.VISIBLE);
         makeNewsList();
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -65,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     token = intent.getStringExtra("token");
                     //Toast.makeText(getApplicationContext(), "Registration token:" + token, Toast.LENGTH_LONG).show();
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-                    if(!preferences.getBoolean("Registered", false)) {
+                    if (!preferences.getBoolean("Registered", false)) {
                         RequestTask requestTask = new RequestTask();
                         requestTask.doInBackground();
                         SharedPreferences.Editor editor = preferences.edit();
@@ -81,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        if(checkPlayServices()){
+        if (checkPlayServices()) {
             Intent intent = new Intent(this, GCMRegistrationIntentService.class);
             startService(intent);
         }
@@ -93,12 +102,10 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
-
             }
 
             @Override
@@ -113,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
         });
         page = 0;
         pageSwitcher(5);
-
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
@@ -154,12 +160,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private boolean checkPlayServices(){
+    private boolean checkPlayServices() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        if(ConnectionResult.SUCCESS != resultCode){
-            if(GooglePlayServicesUtil.isUserRecoverableError(resultCode)){
+        if (ConnectionResult.SUCCESS != resultCode) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
                 Toast.makeText(getApplicationContext(), "Google Play Service is not installed/enabled in this device!", Toast.LENGTH_LONG).show();
-            } else{
+            } else {
                 Toast.makeText(getApplicationContext(), "This device does not support Google Play Services!", Toast.LENGTH_LONG).show();
             }
             return false;
@@ -170,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Registering receiver on activity resume
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Log.w("MainActivity", "onResume");
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(GCMRegistrationIntentService.REGISTRATION_SUCCESS));
@@ -179,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Unregistering receiver on activity paused
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         Log.w("MainActivity", "onPause");
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
@@ -198,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                     if (page == 0) {
                         viewPager.setCurrentItem(0);
                         page++;
-                    }else if (page >= customSwipeAdapter.getCount()) {
+                    } else if (page >= customSwipeAdapter.getCount()) {
                         page = 0;
                         viewPager.setCurrentItem(page);
                     } else {
@@ -212,7 +218,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void makeNewsList() {
         // create an RSS parser
         RssParser parser = new RssParser();
@@ -222,11 +227,32 @@ public class MainActivity extends AppCompatActivity {
         items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0], false);
 
         //create the adapter with layout from new_list_layout and the List<RssItem> items
-        NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
+        final NewsListAdapter adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
 
         //invoke the news list
-        ListView listView = (ListView) findViewById(R.id.list_view);
+        final ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItemm, int visibleItemCountt, int totalItemCountt) {
+                firstVisibleItem = firstVisibleItemm;
+                visibleItemCount = visibleItemCountt;
+                totalItemCount = totalItemCountt;
+            }
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                final int lastItem = firstVisibleItem + visibleItemCount;
+                if (lastItem == totalItemCount && scrollState == SCROLL_STATE_IDLE && scrollCount < 4) {
+                    new ShowMoreInScroll().execute();
+                    if (additionalStories != null) {
+                        items.addAll(additionalStories);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -234,29 +260,28 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(Variables.LINK, items.get(position).getLink());
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-
             }
         });
 
     }
 
-    private class RequestTask extends AsyncTask<String, String, String>{
+    private class RequestTask extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... strings) {
             String response = "";
-            try{
+            try {
                 //this should probably be a constant
-                 // URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
-                 // HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                 // conn.setRequestMethod("GET");
+                // URL url = new URL("http://www.augustanaobserver.com/wp-json/apnwp/register?os_type=android&device_token="+token);
+                // HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                // conn.setRequestMethod("GET");
 
 
-                URL demoURL = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token="+token);
+                URL demoURL = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token=" + token);
                 HttpURLConnection demoConn = (HttpURLConnection) demoURL.openConnection();
                 demoConn.setRequestMethod("GET");
 
-                if(demoConn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                if (demoConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     //do input
                     response = "SUCCESS";
                     Toast.makeText(getApplicationContext(), "We did it!", Toast.LENGTH_LONG).show();
@@ -266,10 +291,31 @@ public class MainActivity extends AppCompatActivity {
                     response = "FAIL";
                     Toast.makeText(getApplicationContext(), "We didn't do it!", Toast.LENGTH_LONG).show();
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
 
             }
             return response;
+        }
+    }
+
+    private class ShowMoreInScroll extends AsyncTask<Void, Void, List<RssItem>> {
+        @Override
+        protected void onPreExecute() {
+            footer.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected List<RssItem> doInBackground(Void... voids) {
+            RssParser parser = new RssParser();
+            scrollCount++;
+            return parser.getNewsList(Variables.AUGUSTANA_LINKS[0] + "?paged=" + scrollCount, false);
+        }
+
+        @Override
+        protected void onPostExecute(List<RssItem> newItems) {
+            additionalStories = newItems;
+            System.out.println("ON POST EXECUTE");
+            footer.setVisibility(View.GONE);
         }
     }
 

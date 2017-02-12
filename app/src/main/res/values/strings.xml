@@ -9,6 +9,7 @@
     <string name="text_home">Home</string>
     <string name="text_category">Categories</string>
     <string name="text_search">Search</string>
+    <string name="loading_list_items">Loding More Stories...</string>
 
 
 </resources>
