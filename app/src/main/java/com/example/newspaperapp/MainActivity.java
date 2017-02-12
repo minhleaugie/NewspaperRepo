@@ -34,7 +34,11 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * The class is the main hub of the application. It displays the main
+ * home page that contains a view pager with featured stories and a list
+ * of the most recently published stories.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
@@ -96,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        customSwipeAdapter = new CustomSwipeAdapter(this, items);
+        RssParser parser = new RssParser();
+        customSwipeAdapter = new CustomSwipeAdapter(this, parser.getNewsList(Variables.AUGUSTANA_LINKS[3], false));
         viewPager.setAdapter(customSwipeAdapter);
         timer = new Timer();
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -122,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         pageSwitcher(5);
 
 
+        // instantiate bottom nav bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
@@ -134,19 +140,20 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(MainActivity.this, CategorySelector.class);
                         startActivity(categoryIntent);
-                        overridePendingTransition(R.anim.display_in, R.anim.display_out);
+                        overridePendingTransition(R.anim.main_out, R.anim.main_in);
                         break;
                     case R.id.action_search:
                         Intent searchIntent = new Intent(MainActivity.this, Search.class);
                         searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
-                        overridePendingTransition(R.anim.display_in, R.anim.display_out);
+                        overridePendingTransition(R.anim.main_out, R.anim.main_in);
                         break;
                 }
                 return false;
             }
         });
 
+        // instantiate about page button
         ImageButton toAbout = (ImageButton) findViewById(R.id.toAbout);
 
         toAbout.setOnClickListener(new View.OnClickListener() {
@@ -218,6 +225,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * This method creates a list view that
+     * displays the most currently published.
+     */
     public void makeNewsList() {
         // create an RSS parser
         RssParser parser = new RssParser();
@@ -297,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
             return response;
         }
     }
-
+    
     private class ShowMoreInScroll extends AsyncTask<Void, Void, List<RssItem>> {
         @Override
         protected void onPreExecute() {
@@ -319,8 +330,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
     protected void onStart() {
         super.onStart();
-        overridePendingTransition(R.anim.main_in, R.anim.main_out);
+        overridePendingTransition(R.anim.display_in, R.anim.display_out);
     }
 }
