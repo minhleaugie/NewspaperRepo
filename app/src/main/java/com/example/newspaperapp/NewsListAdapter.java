@@ -37,14 +37,22 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         View rowView = inflater.inflate(R.layout.news_list_layout, parent, false);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.imageViewIcon);
         TextView textView = (TextView) rowView.findViewById(R.id.textViewNews);
+        TextView pubText = (TextView) rowView.findViewById(R.id.pubDate);
         image = LoadImageFromWebOperations(items.get(position).getImageURL());
         if(image != null) {
             imageView.setImageDrawable(image);
         }
         textView.setText(items.get(position).getTitle());
+        String date = items.get(position).getDate().substring(0,17);
+        pubText.setText(date);
         return rowView;
     }
 
+    /**
+     * This method takes a string URL and converts it to a Drawable.
+     * @param url
+     * @return Drawable of the article image
+     */
     public static Drawable LoadImageFromWebOperations(String url) {
         try {
             InputStream is = (InputStream) new URL(url).getContent();

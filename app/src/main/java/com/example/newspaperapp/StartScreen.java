@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by andrewbainter13 on 1/14/2017.
+ * Creates timed start sceen for opening of application.
  */
 
 public class StartScreen extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class StartScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
+
+        // Creates a timed start screen and starts main activity once time is up
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

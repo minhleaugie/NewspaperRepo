@@ -13,7 +13,12 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+/**
+ * Creates a menu for the different categories of articles and
+ * allows user to obtain list of stories based on the selected category
+ */
 public class CategorySelector extends AppCompatActivity {
+    // data fields
     ImageButton news, arts, features, opinions, sports;
 
     @Override
@@ -21,6 +26,7 @@ public class CategorySelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_selector);
 
+        // instantiate images and set click listeners
         news= (ImageButton) findViewById(R.id.newsButton);
         news.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,9 +67,11 @@ public class CategorySelector extends AppCompatActivity {
             }
         });
 
+        // instantiate bottom nav bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
+        // set bottom nav listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -88,6 +96,11 @@ public class CategorySelector extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method starts a new activity that displays the
+     * articles based on the users category choice.
+     * @param linkChoice
+     */
     public void openCategory(int linkChoice) {
         Intent intent = new Intent(CategorySelector.this, CategoryArticleView.class);
         intent.putExtra(Variables.LINK, linkChoice);

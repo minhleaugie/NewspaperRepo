@@ -51,7 +51,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
         String title = items.get(position).getTitle();
         this.position=position;
         image = LoadImageFromWebOperations(items.get(position).getImageURL());
-        if(title.equals("Augustana Observer") || title.equals("title")){
+        if(title.equals("Augustana Observer") || title.equals("title") || image == null){
             items.remove(position);
             title = items.get(position).getTitle();
         }
@@ -83,6 +83,11 @@ public class CustomSwipeAdapter extends PagerAdapter {
         }
     };
 
+    /**
+     * This method takes a string URL and converts it to a Drawable.
+     * @param url
+     * @return Drawable of the article image
+     */
     public static Drawable LoadImageFromWebOperations(String url) {
         try {
             InputStream is = (InputStream) new URL(url).getContent();
