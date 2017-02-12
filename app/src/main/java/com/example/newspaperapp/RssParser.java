@@ -18,9 +18,17 @@ import javax.xml.parsers.SAXParserFactory;
 
 public class RssParser {
 
+    // data fields
     List<RssItem> cachedRssItems = null;
     Date lastDownloadTime;
 
+    /**
+     * Get the list of articles from the provided link to the
+     * RSS feed.
+     * @param link
+     * @param forceFreshDownload
+     * @return list of articles
+     */
     public List<RssItem> getNewsList(String link, boolean forceFreshDownload) {
         Date now = new Date();
         // use cached time if less than 30 minutes since last download

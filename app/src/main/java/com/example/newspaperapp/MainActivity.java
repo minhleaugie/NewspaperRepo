@@ -32,7 +32,11 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * The class is the main hub of the application. It displays the main
+ * home page that contains a view pager with featured stories and a list
+ * of the most recently published stories.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         pageSwitcher(5);
 
 
-
+        // instantiate bottom nav bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // instantiate about page button
         ImageButton toAbout = (ImageButton) findViewById(R.id.toAbout);
 
         toAbout.setOnClickListener(new View.OnClickListener() {
