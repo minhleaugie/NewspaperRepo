@@ -43,6 +43,11 @@ public class CategoryArticleView extends AppCompatActivity {
         }
     }
 
+    /**
+     * Updates the article list with articles based on search query
+     * and displays them in a list view in a new activity.
+     * @param items
+     */
     private void updateList(final List<RssItem> items){
         // create the adapter with layout from new_list_layout and the List<RssItem> items
         NewsListAdapter adapter = new NewsListAdapter(CategoryArticleView.this, R.layout.news_list_layout, items);
@@ -60,6 +65,7 @@ public class CategoryArticleView extends AppCompatActivity {
         });
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
