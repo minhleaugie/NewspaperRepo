@@ -19,12 +19,23 @@
         android:padding="5dp"
         />
 
-    <TextView
-        android:id="@+id/textViewNews"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="@string/augie_observer"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textViewNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:text="@string/augie_observer"
         />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pubDate"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 </LinearLayout>

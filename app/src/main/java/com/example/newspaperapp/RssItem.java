@@ -17,59 +17,94 @@ public class RssItem {
     private String imageURL;
     private static int MIN_IMAGE_URL_LENGTH = (new String("http://www.augustanaobserver.com")).length();
 
-    //Constructor; initializes variable tags
+    /**
+     * Contructor for the RSS item
+     */
     public RssItem() {
         tags = new ArrayList<String>();
     }
 
-    //Returns variable date
+    /**
+     * Retrieves and returns published data of article
+     * @return String date of article
+     */
     public String getDate() {
         return date;
     }
 
-    //Sets variable date from RSS tag pubdate
+    /**
+     * Sets the article published date
+     * @param date
+     */
     public void setDate(String date) {
         this.date = date;
     }
 
-    //Returns variable title
+    /**
+     * Retrieves and returns the title of the article
+     * @return title of article
+     */
     public String getTitle() {
         return title;
     }
 
-    //Sets variable title from RSS tag title
+    /**
+     * Sets the article title
+     * @param title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    //Returns variable link
+    /**
+     * Retrieves and returns the link to the article
+     * @return link of article
+     */
     public String getLink() {
         return link;
     }
 
-    //Sets varaible line from RSS tag link
+    /**
+     * Sets the link of the article
+     * @param link
+     */
     public void setLink(String link) {
         this.link = link;
     }
 
-    //Returns variable description
+    /**
+     * Retrieves and returns the description of the article
+     * @return description of the article
+     */
     public String getDescription() {
         return description;
     }
 
-    //Sets varaible description to RSS tag description
+    /**
+     * Sets the description of the article
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    //Adds each category tag to varaible tags
+    /**
+     * Adds a tag to the array of tags that correspond to
+     * the article
+     * @param tag
+     */
     public void addCategoryTag(String tag) { tags.add(tag); }
 
-    //Returns variable tags
+    /**
+     * Retrieves and returns the array of tags for the article
+     * @return array list of strings
+     */
     public ArrayList<String> getCategoryTags() { return tags; }
 
-    //Sets variable imageURL by cutting RSS string from tag encoded
-    //accounts for double pictures in posts and only gets first
+    /**
+     * Sets the image URL of the article and accounts for multiple pictures.
+     * @param imageURL
+     */
     public void setImageURL(String imageURL) {
         //Splits string from RSS by spaces
         String[] parts = imageURL.split("\\s+");
@@ -91,7 +126,10 @@ public class RssItem {
         }
     }
 
-    //Returns variable imageURL
+    /**
+     * Retrieves and returns the URL for the images of the article.
+     * @return URL of the image for the article
+     */
     public String getImageURL() {
         return imageURL;
     }

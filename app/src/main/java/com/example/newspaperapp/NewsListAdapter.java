@@ -37,11 +37,14 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         View rowView = inflater.inflate(R.layout.news_list_layout, parent, false);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.imageViewIcon);
         TextView textView = (TextView) rowView.findViewById(R.id.textViewNews);
+        TextView pubText = (TextView) rowView.findViewById(R.id.pubDate);
         image = LoadImageFromWebOperations(items.get(position).getImageURL());
         if(image != null) {
             imageView.setImageDrawable(image);
         }
         textView.setText(items.get(position).getTitle());
+        String date = items.get(position).getDate().substring(0,17);
+        pubText.setText(date);
         return rowView;
     }
 
