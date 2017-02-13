@@ -41,7 +41,9 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         TextView textView = (TextView) rowView.findViewById(R.id.textViewNews);
         TextView pubText = (TextView) rowView.findViewById(R.id.pubDate);
         try {
-            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(items.get(position).getImageURL()).getContent());
+            String imageURL = items.get(position).getImageURL();
+            String thumbnailImageURL = getWordpressThumbnailURL(imageURL, "150x150");
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(thumbnailImageURL).getContent());
             if(bitmap != null) {
                 imageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 64,64,false));
             }
@@ -52,6 +54,13 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         String date = items.get(position).getDate().substring(0,17);
         pubText.setText(date);
         return rowView;
+    }
+
+    static String getWordpressThumbnailURL(String imageURL, String thumbSizing) {
+        int pos = imageURL.lastIndexOf('.');
+        String extension = imageURL.substring(pos);
+        String stem = imageURL.substring(0, pos);
+        return stem+"-"+thumbSizing+extension;
     }
 
 }

@@ -17,16 +17,14 @@ public class StartScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
-        Log.d("NEWSIES", "launching start screeen");
 
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                Log.d("NEWSIES", "test1");
+                // pre-load the RSS feeds so they are cached, and the home screen will show quickly...
                 RssParser.getNewsList(RssConstants.AUGUSTANA_LINKS[RssConstants.MAIN_FEED_INDEX], false);
-                Log.d("NEWSIES", "test2");
                 RssParser.getNewsList(RssConstants.AUGUSTANA_LINKS[RssConstants.FEATURES_FEED_INDEX], false);
-                Log.d("NEWSIES", "test3");
+
 
                 Intent mainActivity = new Intent(StartScreen.this,MainActivity.class);
                 StartScreen.this.startActivity(mainActivity);
