@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Created by Ver on 1/7/2017.
  *
- * Uses information from the RSS feed to populate a pageviewer that allows for swiping
+ * Uses information from the  RSS feed to populate a pageviewer that allows for swiping
  * through images on the home screen. Sets the appropriate text with the pictures to
  * explain what the pictures are. Sets a listener on each picture so clicking the picture
  * will take the user to the accompanying article
