@@ -15,9 +15,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class NewsListAdapter extends ArrayAdapter<RssItem> {
 
@@ -28,12 +31,10 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
 
     public NewsListAdapter(Context context, int layoutResourceId, List<RssItem> items) {
         super(context, layoutResourceId, items);
-
         this.context = context;
         this.layoutResourceId = layoutResourceId;
         this.items = items;
     }
-
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.news_list_layout, parent, false);
@@ -41,17 +42,52 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         TextView textView = (TextView) rowView.findViewById(R.id.textViewNews);
         TextView pubText = (TextView) rowView.findViewById(R.id.pubDate);
         try {
-            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(items.get(position).getImageURL()).getContent());
-            if(bitmap != null) {
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(items.get(position).getImageURL()).getContent());
+            if (bitmap != null) {
                 imageView.setImageBitmap(bitmap);
             }
         } catch (Exception e) {
 
         }
         textView.setText(items.get(position).getTitle());
-        String date = items.get(position).getDate().substring(0,17);
+        String date = items.get(position).getDate().substring(0, 17);
         pubText.setText(date);
         return rowView;
     }
+
+/*    public View getView(int position, View convertView, ViewGroup parent) {
+        RssItem current_item = items.get(position);
+        ViewHolderItems viewHolder = null;
+        if (convertView == null) {
+            System.out.println("View is null");
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.news_list_layout, parent, false);
+            viewHolder = new ViewHolderItems();
+            viewHolder.mStoreImage = (ImageView) convertView.findViewById(R.id.imageViewIcon);
+            viewHolder.mStoreName = (TextView) convertView.findViewById(R.id.textViewNews);
+            viewHolder.mPubDate = (TextView) convertView.findViewById(R.id.pubDate);
+            try {
+                Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(current_item.getImageURL()).getContent());
+                if (bitmap != null) {;
+                    current_item.setImageBitmap(bitmap);
+                }
+            } catch (Exception e) {
+            }
+
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolderItems) convertView.getTag();
+        }
+        viewHolder.mStoreName.setText(current_item.getTitle());
+        viewHolder.mPubDate.setText(current_item.getDate().substring(0, 17));
+        viewHolder.mStoreImage.setImageBitmap(current_item.getBitmap());
+        return convertView;
+    }
+
+    protected static class ViewHolderItems {
+        private ImageView mStoreImage;
+        private TextView mStoreName;
+        private TextView mPubDate;
+    }*/
 
 }

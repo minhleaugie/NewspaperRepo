@@ -1,5 +1,7 @@
 package com.example.newspaperapp;
 
+import android.graphics.Bitmap;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class RssItem {
     private String date;
     private ArrayList<String> tags;
     private String imageURL;
+    private Bitmap bitmap;
     private static int MIN_IMAGE_URL_LENGTH = (new String("http://www.augustanaobserver.com")).length();
 
     /**
@@ -132,5 +135,23 @@ public class RssItem {
      */
     public String getImageURL() {
         return imageURL;
+    }
+
+    /**
+     * Sets the bitmap for the image of the article
+     *
+     * @param bitmap
+     */
+    public void setImageBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
+    /**
+     * Retrieves and returns the bitmap for the image of the article.
+     *
+     * @return bitmap of the image for the article
+     */
+    public Bitmap getBitmap() {
+        return bitmap;
     }
 }
