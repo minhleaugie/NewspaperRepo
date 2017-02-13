@@ -1,4 +1,4 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 /**
  * Created by Ver on 1/6/2017.
@@ -15,11 +15,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
+import com.example.newspaperapp.R;
 import com.google.android.gms.gcm.GcmListenerService;
 
-import java.util.Date;
 import java.util.List;
 
 /**

@@ -1,15 +1,16 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.newspaperapp.R;
 
 /**
  * Created by BrightLight on 1/4/2017.

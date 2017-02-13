@@ -1,4 +1,4 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 import android.graphics.Bitmap;
 

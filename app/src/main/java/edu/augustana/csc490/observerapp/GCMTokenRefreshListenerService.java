@@ -1,4 +1,4 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 /**
  * Created by Ver on 1/6/2017.

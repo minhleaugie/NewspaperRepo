@@ -1,11 +1,10 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 import android.util.Log;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;

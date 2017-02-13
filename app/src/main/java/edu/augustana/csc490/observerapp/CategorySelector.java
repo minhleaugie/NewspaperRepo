@@ -1,4 +1,4 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.example.newspaperapp.R;
 
 /**
  * Creates a menu for the different categories of articles and

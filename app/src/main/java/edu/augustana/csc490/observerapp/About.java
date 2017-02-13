@@ -1,9 +1,6 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.newspaperapp.R;
 
 /**
  * Created by andrewbainter13 on 2/11/2017.

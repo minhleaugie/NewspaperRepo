@@ -1,4 +1,4 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.newspaperapp.R;
 
 import java.util.List;
 

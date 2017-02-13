@@ -5,7 +5,7 @@
     android:id="@+id/activity_category"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context="com.example.newspaperapp.CategorySelector"
+    tools:context="com.example.newspaperapp.edu.augustana.csc490.observerapp.CategorySelector"
     android:orientation="horizontal"
     android:background="@color/colorPrimary">
 

@@ -1,4 +1,4 @@
-package com.example.newspaperapp;
+package edu.augustana.csc490.observerapp;
 
 /**
  * Created by MinhElQueue on 1/14/2017.
@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.newspaperapp.R;
 
 import java.io.InputStream;
 import java.net.URL;

@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:largeHeap="true">
-        <activity android:name=".StartScreen"
+        <activity android:name="edu.augustana.csc490.observerapp.StartScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,17 +29,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name="edu.augustana.csc490.observerapp.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StartScreen" />
+                android:value="edu.augustana.csc490.observerapp.StartScreen" />
         </activity>
-        <activity android:name=".Search"
+        <activity android:name="edu.augustana.csc490.observerapp.Search"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StartScreen" />
+                android:value="edu.augustana.csc490.observerapp.StartScreen" />
         </activity>
 
         <!-- GCM Receiver -->
@@ -54,7 +54,7 @@
 
         <!-- GCM Receiver Service -->
         <service
-            android:name=".GCMPushReceiverService"
+            android:name="edu.augustana.csc490.observerapp.GCMPushReceiverService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -63,17 +63,17 @@
 
         <!-- GCM Registration Intent Service -->
         <service
-            android:name=".GCMRegistrationIntentService"
+            android:name="edu.augustana.csc490.observerapp.GCMRegistrationIntentService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
 
-        <activity android:name=".ArticleActivity" />
-        <activity android:name=".CategorySelector" />
-        <activity android:name=".CategoryArticleView"></activity>
-        <activity android:name=".About"/>
+        <activity android:name="edu.augustana.csc490.observerapp.ArticleActivity" />
+        <activity android:name="edu.augustana.csc490.observerapp.CategorySelector" />
+        <activity android:name="edu.augustana.csc490.observerapp.CategoryArticleView"></activity>
+        <activity android:name="edu.augustana.csc490.observerapp.About"/>
     </application>
 
 </manifest>
