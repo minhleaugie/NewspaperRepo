@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "646972957191",
-    "firebase_url": "https://newspaperrepo.firebaseio.com",
-    "project_id": "newspaperrepo",
-    "storage_bucket": "newspaperrepo.appspot.com"
+    "project_number": "824337008128",
+    "firebase_url": "https://observerapp-b323a.firebaseio.com",
+    "project_id": "observerapp-b323a",
+    "storage_bucket": "observerapp-b323a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:646972957191:android:548ac1a2d91e0913",
+        "mobilesdk_app_id": "1:824337008128:android:166aa8da07ac47fd",
         "android_client_info": {
-          "package_name": "com.example.newspaperapp"
+          "package_name": "edu.augustana.csc490.observerapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "646972957191-915r0rh3bb2pq3i4vrhbijlaso6s2ic4.apps.googleusercontent.com",
+          "client_id": "824337008128-mugg5eq9jc3lcj32bcilj8vh5usd2aon.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDkzY9SwVbWaYhUVkKZL7WgM-Uj8WTByxY"
+          "current_key": "AIzaSyCFDmk-N8yJDQleO74MzbfQrabjF2bhURM"
         }
       ],
       "services": {

@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.newspaperapp.R;
-
 /**
  * Created by andrewbainter13 on 2/11/2017.
  * Displays about screen.

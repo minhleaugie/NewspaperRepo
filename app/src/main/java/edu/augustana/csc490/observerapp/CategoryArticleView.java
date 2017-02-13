@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.newspaperapp.R;
-
 import java.util.List;
 
 public class CategoryArticleView extends AppCompatActivity {

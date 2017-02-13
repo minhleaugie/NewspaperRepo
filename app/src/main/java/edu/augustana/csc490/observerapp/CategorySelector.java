@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.newspaperapp.R;
-
 /**
  * Creates a menu for the different categories of articles and
  * allows user to obtain list of stories based on the selected category

@@ -16,7 +16,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
-import com.example.newspaperapp.R;
 import com.google.android.gms.gcm.GcmListenerService;
 
 import java.util.List;

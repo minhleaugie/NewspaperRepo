@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.newspaperapp.R;
-
 
 /**
  * Created by andrewbainter13 on 1/14/2017.

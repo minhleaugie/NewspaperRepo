@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.newspaperapp.R;
 
 /**
  * Created by BrightLight on 1/4/2017.

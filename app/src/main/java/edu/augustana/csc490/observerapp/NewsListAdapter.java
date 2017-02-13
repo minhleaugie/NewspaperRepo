@@ -18,8 +18,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.newspaperapp.R;
-
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
