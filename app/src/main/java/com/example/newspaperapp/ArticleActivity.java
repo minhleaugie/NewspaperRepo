@@ -35,6 +35,7 @@ public class ArticleActivity extends Activity {
         dialog = ProgressDialog.show(this, "", "Loading ...");
         webView.loadUrl(link);
 
+        //instanstiate bottom nav bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
@@ -43,6 +44,7 @@ public class ArticleActivity extends Activity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_home:
+
                         Intent homeIntent = new Intent(ArticleActivity.this, MainActivity.class);
                         homeIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(homeIntent);
@@ -66,18 +68,6 @@ public class ArticleActivity extends Activity {
 
     }
 
-    class NewTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            return null;
-
-        }
-
-
-    }
-
     class ArticleWebViewClient extends WebViewClient {
         @Override
         public void onPageFinished(WebView view, String url) {
@@ -88,16 +78,17 @@ public class ArticleActivity extends Activity {
         }
     }
 
+    @Override
     protected void onStart() {
         super.onStart();
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
-
+    @Override
     protected void onStop() {
         super.onStop();
         overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
     }
-
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         overridePendingTransition(R.anim.fade_out, R.anim.fade_in);

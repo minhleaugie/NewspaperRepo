@@ -9,7 +9,9 @@ import com.google.android.gms.iid.InstanceIDListenerService;
 
 public class GCMTokenRefreshListenerService extends InstanceIDListenerService {
 
-    //if the token is changed registering the device again
+    /**
+     * Registers the device again if the token is changed
+     */
     @Override
     public void onTokenRefresh(){
         Intent intent = new Intent(this, GCMRegistrationIntentService.class);

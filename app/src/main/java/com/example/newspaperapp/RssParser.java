@@ -38,12 +38,16 @@ public class RssParser {
      * @return list of articles
      */
     public static List<RssItem> getNewsList(String link, boolean forceFreshDownload) {
+        Log.d("NEWSIES", "RssParser got request (force="+forceFreshDownload+"): " + link);
+
         Date now = new Date();
         // use cached time if less than 30 minutes since last download
         if (cachedRssItems.containsKey(link) && !forceFreshDownload && getDateDiff(lastDownloadTimes.get(link),now,TimeUnit.MINUTES) < 30) {
+            Log.d("NEWSIES", "RssParser returning cached copy.");
             return cachedRssItems.get(link);
         } else {
             try {
+                Log.d("NEWSIES", "RssParser fetching new copy.");
                 URL url = new URL(link);
                 SAXParserFactory factory = SAXParserFactory.newInstance();
                 SAXParser parser = factory.newSAXParser();

@@ -29,6 +29,10 @@ public class GCMRegistrationIntentService extends IntentService {
         registerGCM();
     }
 
+    /**
+     * This method registers the google cloud messenger to
+     * the device
+     */
     private void registerGCM(){
         //Registration complete intent initially null
         Intent registrationComplete = null;
