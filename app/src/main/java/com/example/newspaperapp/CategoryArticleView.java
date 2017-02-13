@@ -12,8 +12,6 @@ import android.widget.ListView;
 import java.util.List;
 
 public class CategoryArticleView extends AppCompatActivity {
-
-    private List<RssItem> items;
     private ProgressDialog dialog;
 
     @Override

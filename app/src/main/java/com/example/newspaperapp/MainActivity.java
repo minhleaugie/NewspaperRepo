@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     int page;
     private List<RssItem> items;
     private int scrollCount = 2;
-    private RelativeLayout footer;
 
     String token;
 
@@ -57,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
-
-        footer = (RelativeLayout) findViewById(R.id.footer);
-        footer.setVisibility(View.GONE);
 
         makeNewsList();
 
