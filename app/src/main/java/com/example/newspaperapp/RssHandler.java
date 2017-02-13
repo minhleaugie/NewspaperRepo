@@ -27,10 +27,18 @@ public class RssHandler extends DefaultHandler{
     private boolean started = false;
     private StringBuilder sBuilder = new StringBuilder();
 
-
+    /**
+     * Finds an item tag to begin parsing of one story
+     * Creates new RssItem that will be added to list
+     *
+     * @param uri
+     * @param localName
+     * @param qName
+     * @param attributes
+     * @throws SAXException
+     */
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-
         super.startElement(uri, localName, qName, attributes);
 
         if (localName.equalsIgnoreCase(ITEM)) {
@@ -40,6 +48,15 @@ public class RssHandler extends DefaultHandler{
 
     }
 
+    /**
+     * Parses through tags in Rss Feed
+     * Compares them to string constants for tags title, description, link,
+     * pubdate, category, and encoded (for the image_url)
+     * @param uri
+     * @param localName
+     * @param qName
+     * @throws SAXException
+     */
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         super.endElement(uri, localName, qName);
@@ -63,6 +80,13 @@ public class RssHandler extends DefaultHandler{
         }
     }
 
+    /**
+     * Builds the string for each tag
+     * @param ch
+     * @param start
+     * @param length
+     * @throws SAXException
+     */
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         super.characters(ch, start, length);

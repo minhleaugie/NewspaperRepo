@@ -44,7 +44,16 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         this.items = items;
     }
 
-
+    /**
+     * Creates a new View object rowview, with new_list_layout as layout
+     * for image, article title, and article pubdate
+     * Called when the new View is shown in scrollview
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return rowView
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.news_list_layout, parent, false);
@@ -81,7 +90,8 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         return stem+"-"+thumbSizing+extension;
     }
 
-/*    public View getView(int position, View convertView, ViewGroup parent) {
+    /*Attempt at more efficient getView; works, but places images in wrong places
+    public View getView(int position, View convertView, ViewGroup parent) {
         RssItem current_item = items.get(position);
         ViewHolderItems viewHolder = null;
         if (convertView == null) {

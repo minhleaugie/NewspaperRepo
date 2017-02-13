@@ -26,7 +26,9 @@ public class CategoryArticleView extends AppCompatActivity {
         dialog = new ProgressDialog(CategoryArticleView.this, ProgressDialog.STYLE_SPINNER).show(CategoryArticleView.this, "Getting Articles...", "");
     }
 
-
+    /**
+     * Runs the Rss Parsing in a background task; shows a progress dialog for loading
+     */
     private class SearchListTask extends AsyncTask<String, Void, List<RssItem>> {
         protected List<RssItem> doInBackground(String[] urls) {
             return RssParser.getNewsList(urls[0], true);
