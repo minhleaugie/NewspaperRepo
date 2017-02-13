@@ -71,6 +71,10 @@ public class RssHandler extends DefaultHandler{
         }
     }
 
+    /**
+     * Retrieves and returns list of articles from feed
+     * @return list of articles
+     */
     public List<RssItem> getItemList() {
         return itemList;
     }

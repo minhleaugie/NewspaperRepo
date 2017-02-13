@@ -30,7 +30,11 @@ public class GCMPushReceiverService extends GcmListenerService {
     String url;
 
 
-    //this method will be called on every new message received
+    /**
+     * This method is called on every new message received
+     * @param from
+     * @param data
+     */
     @Override
     public void onMessageReceived(String from, Bundle data){
         //getting the message from the bundle
@@ -49,6 +53,10 @@ public class GCMPushReceiverService extends GcmListenerService {
         Log.w("Testing", "do we even get here? after async");
     }
 
+    /**
+     * This method opens the bundle of information from GCM
+     * @param bun
+     */
     private void openBundle(Bundle bun){
         if(bun == null){
             return;
@@ -58,7 +66,11 @@ public class GCMPushReceiverService extends GcmListenerService {
         }
     }
 
-    //this method is generating a notification and displaying the notification
+    /**
+     * This method generates a notification and displays the notification
+     * @param message
+     * @param title
+     */
     private void sendNotification(String message, String title){
         Intent intent;
         if(url != null) {
