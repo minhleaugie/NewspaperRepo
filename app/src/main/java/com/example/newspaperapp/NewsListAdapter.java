@@ -43,7 +43,7 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         try {
             Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(items.get(position).getImageURL()).getContent());
             if(bitmap != null) {
-                imageView.setImageBitmap(bitmap);
+                imageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 64,64,false));
             }
         } catch (Exception e) {
 
