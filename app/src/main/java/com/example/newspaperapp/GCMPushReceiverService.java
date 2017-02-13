@@ -93,6 +93,8 @@ public class GCMPushReceiverService extends GcmListenerService {
 
         /**
          *
+         * Constructor
+         *
          * @param message the body of the post to show in the notification
          * @param title the title of the post to show in the notificaition
          * @param notificationID the unique id to allow multiple notifications
