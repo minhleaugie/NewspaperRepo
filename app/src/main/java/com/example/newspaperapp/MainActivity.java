@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Gets more stories while users are still able to use app
-        new ShowMoreInScroll().execute();
+        //new ShowMoreInScroll().execute();
     }
 
     private class RequestTask extends AsyncTask<String, String, String> {
