@@ -245,24 +245,6 @@ public class MainActivity extends AppCompatActivity {
         //invoke the news list
         final ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
-        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItemm, int visibleItemCountt, int totalItemCountt) {
-                firstVisibleItem = firstVisibleItemm;
-                visibleItemCount = visibleItemCountt;
-                totalItemCount = totalItemCountt;
-            }
-
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                final int lastItem = firstVisibleItem + visibleItemCount;
-                if (lastItem == totalItemCount && scrollState == SCROLL_STATE_IDLE && scrollCount < 4 && !loadingTask) {
-                    scrollCount++;
-                    new ShowMoreInScroll().execute();
-                }
-            }
-        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -274,6 +256,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Gets more stories while users are still able to use app
+        new ShowMoreInScroll().execute();
     }
 
     private class RequestTask extends AsyncTask<String, String, String> {
@@ -312,8 +296,6 @@ public class MainActivity extends AppCompatActivity {
     private class ShowMoreInScroll extends AsyncTask<Void, Void, List<RssItem>> {
         @Override
         protected void onPreExecute() {
-            loadingTask = true;
-            footer.setVisibility(View.VISIBLE);
             System.out.println("ON PRE EXECUTE");
         }
 
@@ -326,9 +308,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<RssItem> newItems) {
             items.addAll(newItems);
-            footer.setVisibility(View.GONE);
+            scrollCount++;
             adapter.notifyDataSetChanged();
-            loadingTask = false;
             System.out.println("ON POST EXECUTE");
         }
     }
