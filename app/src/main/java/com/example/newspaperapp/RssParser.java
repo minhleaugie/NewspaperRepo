@@ -64,7 +64,6 @@ public class RssParser {
                 return null;
             }
         }
-
     }
 
     /**
