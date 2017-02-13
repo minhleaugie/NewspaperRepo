@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -28,7 +27,7 @@ public class ArticleActivity extends Activity {
         setContentView(R.layout.activity_article);
         Bundle bundle = getIntent().getExtras();
         setTitle(R.string.app_name);
-        link = bundle.getString(Variables.LINK);
+        link = bundle.getString(RssConstants.LINK);
         webView = (WebView) findViewById(R.id.webViewNews);
 
         webView.setWebViewClient(new ArticleWebViewClient());

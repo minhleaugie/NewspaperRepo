@@ -19,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         footer = (RelativeLayout) findViewById(R.id.footer);
         footer.setVisibility(View.GONE);
+
         makeNewsList();
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        RssParser parser = new RssParser();
-        customSwipeAdapter = new CustomSwipeAdapter(this, parser.getNewsList(Variables.AUGUSTANA_LINKS[3], false));
+
+        customSwipeAdapter = new CustomSwipeAdapter(this, RssParser.getNewsList(RssConstants.AUGUSTANA_LINKS[RssConstants.FEATURES_FEED_INDEX], false));
         viewPager.setAdapter(customSwipeAdapter);
         timer = new Timer();
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -232,12 +232,10 @@ public class MainActivity extends AppCompatActivity {
      * displays the most currently published.
      */
     public void makeNewsList() {
-        // create an RSS parser
-        RssParser parser = new RssParser();
 
         //initiate the RssItem list from the Home
         //AUGUSTTANA_LINKS[0] is the first item in AUGUSTANA_LINKS, the feeds of Home page
-        items = parser.getNewsList(Variables.AUGUSTANA_LINKS[0], false);
+        items = RssParser.getNewsList(RssConstants.AUGUSTANA_LINKS[RssConstants.MAIN_FEED_INDEX], false);
 
         //create the adapter with layout from new_list_layout and the List<RssItem> items
         adapter = new NewsListAdapter(this, R.layout.news_list_layout, items);
@@ -268,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent(MainActivity.this, ArticleActivity.class);
-                intent.putExtra(Variables.LINK, items.get(position).getLink());
+                intent.putExtra(RssConstants.LINK, items.get(position).getLink());
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
@@ -319,8 +317,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected List<RssItem> doInBackground(Void... voids) {
-            RssParser parser = new RssParser();
-            return parser.getNewsList(Variables.AUGUSTANA_LINKS[0] + "?paged=" + scrollCount, false);
+            return RssParser.getNewsList(RssConstants.AUGUSTANA_LINKS[RssConstants.MAIN_FEED_INDEX] + "?paged=" + scrollCount, false);
         }
 
         @Override

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -84,7 +82,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(ctx, ArticleActivity.class);
-            intent.putExtra(Variables.LINK, items.get(position).getLink());
+            intent.putExtra(RssConstants.LINK, items.get(position).getLink());
             ctx.startActivity(intent);
         }
     };

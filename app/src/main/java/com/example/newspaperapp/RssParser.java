@@ -1,12 +1,16 @@
 package com.example.newspaperapp;
 
+import android.util.Log;
+
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.xml.parsers.SAXParser;
@@ -19,9 +23,13 @@ import javax.xml.parsers.SAXParserFactory;
 public class RssParser {
 
     // data fields
-    List<RssItem> cachedRssItems = null;
-    Date lastDownloadTime;
+    private static Map<String,List<RssItem>> cachedRssItems = new HashMap<>();
+    private static Map<String,Date> lastDownloadTimes = new HashMap<>();
 
+    // TODO: Delete this after compiling
+    private RssParser() {
+
+    }
     /**
      * Get the list of articles from the provided link to the
      * RSS feed.
@@ -29,11 +37,11 @@ public class RssParser {
      * @param forceFreshDownload
      * @return list of articles
      */
-    public List<RssItem> getNewsList(String link, boolean forceFreshDownload) {
+    public static List<RssItem> getNewsList(String link, boolean forceFreshDownload) {
         Date now = new Date();
         // use cached time if less than 30 minutes since last download
-        if (cachedRssItems != null && !forceFreshDownload && getDateDiff(lastDownloadTime,now,TimeUnit.MINUTES) < 30) {
-            return cachedRssItems;
+        if (cachedRssItems.containsKey(link) && !forceFreshDownload && getDateDiff(lastDownloadTimes.get(link),now,TimeUnit.MINUTES) < 30) {
+            return cachedRssItems.get(link);
         } else {
             try {
                 URL url = new URL(link);
@@ -44,17 +52,20 @@ public class RssParser {
                 reader.setContentHandler(handler);
                 InputSource source = new InputSource(url.openStream());
                 reader.parse(source);
-                cachedRssItems = handler.getItemList();
-                lastDownloadTime = now;
-                return cachedRssItems;
+                List<RssItem> retrievedItems = handler.getItemList();
+                Log.d("NEWSIES", "RssParser: " + retrievedItems);
+                cachedRssItems.put(link,retrievedItems );
+                lastDownloadTimes.put(link, now);
+                return retrievedItems;
             } catch (Exception e) {
+                Log.d("NEWSIES", "GOT ERROR: " + e);
                 e.printStackTrace();
+
                 return null;
             }
         }
 
     }
-
 
     /**
      * Get a diff between two dates

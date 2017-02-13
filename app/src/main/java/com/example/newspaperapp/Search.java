@@ -116,8 +116,8 @@ public class Search extends AppCompatActivity {
 
     private class SearchListTask extends AsyncTask<String, Void, List<RssItem>> {
         protected List<RssItem> doInBackground(String[] urls) {
-            RssParser parser = new RssParser();
-            return parser.getNewsList(urls[0], true);
+
+            return RssParser.getNewsList(urls[0], true);
         }
         protected void onPostExecute(List<RssItem> items){
             dialog.dismiss();
@@ -140,7 +140,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent(Search.this, ArticleActivity.class);
-                intent.putExtra(Variables.LINK, items.get(position).getLink());
+                intent.putExtra(RssConstants.LINK, items.get(position).getLink());
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
