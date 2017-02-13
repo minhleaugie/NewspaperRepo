@@ -9,7 +9,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -44,7 +43,7 @@ public class GCMPushReceiverService extends GcmListenerService {
 
 
         //get the corresponding article
-        new FindURLTask().execute(Variables.AUGUSTANA_LINKS[0]);
+        new FindURLTask().execute(RssConstants.AUGUSTANA_LINKS[RssConstants.MAIN_FEED_INDEX]);
 
         //sendNotification(message, title, smallIcon);
         Log.w("Testing", "do we even get here? after async");
@@ -64,7 +63,7 @@ public class GCMPushReceiverService extends GcmListenerService {
         Intent intent;
         if(url != null) {
             intent = new Intent(this, ArticleActivity.class);
-            intent.putExtra(Variables.LINK, url);
+            intent.putExtra(RssConstants.LINK, url);
         } else {
             intent = new Intent(this, StartScreen.class);
         }
@@ -85,8 +84,7 @@ public class GCMPushReceiverService extends GcmListenerService {
 
     private class FindURLTask extends AsyncTask<String, Void, List<RssItem>> {
         protected List<RssItem> doInBackground(String[] urls) {
-            RssParser parser = new RssParser();
-            return parser.getNewsList(urls[0], true);
+            return RssParser.getNewsList(urls[0], true);
         }
         protected void onPostExecute(List<RssItem> items){
             url = items.get(0).getLink();

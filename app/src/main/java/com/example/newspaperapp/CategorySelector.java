@@ -1,7 +1,6 @@
 package com.example.newspaperapp;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-
-import java.util.ArrayList;
 
 /**
  * Creates a menu for the different categories of articles and
@@ -91,6 +87,7 @@ public class CategorySelector extends AppCompatActivity {
                         searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
                         finish();
+                        overridePendingTransition(R.anim.main_out, R.anim.main_in);
                         break;
                 }
                 return false;
@@ -105,7 +102,7 @@ public class CategorySelector extends AppCompatActivity {
      */
     public void openCategory(int linkChoice) {
         Intent intent = new Intent(CategorySelector.this, CategoryArticleView.class);
-        intent.putExtra(Variables.LINK, linkChoice);
+        intent.putExtra(RssConstants.LINK, linkChoice);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }

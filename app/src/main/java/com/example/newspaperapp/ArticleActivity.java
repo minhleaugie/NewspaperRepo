@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -28,7 +27,7 @@ public class ArticleActivity extends Activity {
         setContentView(R.layout.activity_article);
         Bundle bundle = getIntent().getExtras();
         setTitle(R.string.app_name);
-        link = bundle.getString(Variables.LINK);
+        link = bundle.getString(RssConstants.LINK);
         webView = (WebView) findViewById(R.id.webViewNews);
 
         webView.setWebViewClient(new ArticleWebViewClient());
@@ -47,15 +46,18 @@ public class ArticleActivity extends Activity {
                         Intent homeIntent = new Intent(ArticleActivity.this, MainActivity.class);
                         homeIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(homeIntent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         break;
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(ArticleActivity.this, CategorySelector.class);
                         startActivity(categoryIntent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         break;
                     case R.id.action_search:
                         Intent searchIntent = new Intent(ArticleActivity.this, Search.class);
                         searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         break;
                 }
                 return false;

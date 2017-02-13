@@ -1,14 +1,11 @@
 package com.example.newspaperapp;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -26,16 +23,15 @@ public class CategoryArticleView extends AppCompatActivity {
 
         //initiate the RssItem list from the Home
         //AUGUSTTANA_LINKS[0] is the first item in AUGUSTANA_LINKS, the feeds of Home page
-        int linkChoice = getIntent().getIntExtra(Variables.LINK,0);
-        new CategoryArticleView.SearchListTask().execute(Variables.AUGUSTANA_LINKS[linkChoice]);
+        int linkChoice = getIntent().getIntExtra(RssConstants.LINK, RssConstants.MAIN_FEED_INDEX);
+        new CategoryArticleView.SearchListTask().execute(RssConstants.AUGUSTANA_LINKS[linkChoice]);
         dialog = new ProgressDialog(CategoryArticleView.this, ProgressDialog.STYLE_SPINNER).show(CategoryArticleView.this, "Getting Articles...", "");
     }
 
 
     private class SearchListTask extends AsyncTask<String, Void, List<RssItem>> {
         protected List<RssItem> doInBackground(String[] urls) {
-            RssParser parser = new RssParser();
-            return parser.getNewsList(urls[0], true);
+            return RssParser.getNewsList(urls[0], true);
         }
         protected void onPostExecute(List<RssItem> items){
             dialog.dismiss();
@@ -58,7 +54,7 @@ public class CategoryArticleView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent(CategoryArticleView.this, ArticleActivity.class);
-                intent.putExtra(Variables.LINK, items.get(position).getLink());
+                intent.putExtra(RssConstants.LINK, items.get(position).getLink());
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
