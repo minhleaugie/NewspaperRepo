@@ -46,15 +46,18 @@ public class ArticleActivity extends Activity {
                         Intent homeIntent = new Intent(ArticleActivity.this, MainActivity.class);
                         homeIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(homeIntent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         break;
                     case R.id.action_category:
                         Intent categoryIntent = new Intent(ArticleActivity.this, CategorySelector.class);
                         startActivity(categoryIntent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         break;
                     case R.id.action_search:
                         Intent searchIntent = new Intent(ArticleActivity.this, Search.class);
                         searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         break;
                 }
                 return false;

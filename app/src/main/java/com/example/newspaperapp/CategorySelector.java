@@ -87,6 +87,7 @@ public class CategorySelector extends AppCompatActivity {
                         searchIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(searchIntent);
                         finish();
+                        overridePendingTransition(R.anim.main_out, R.anim.main_in);
                         break;
                 }
                 return false;

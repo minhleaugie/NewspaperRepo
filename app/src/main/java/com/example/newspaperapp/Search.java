@@ -150,7 +150,7 @@ public class Search extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // transition every time the search class activity starts
         overridePendingTransition(R.anim.main_out, R.anim.main_in);
     }
+
 }
