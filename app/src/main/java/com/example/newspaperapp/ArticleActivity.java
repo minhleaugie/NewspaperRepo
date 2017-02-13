@@ -13,6 +13,9 @@ import android.webkit.WebViewClient;
 
 /**
  * Created by BrightLight on 1/4/2017.
+ *
+ * Use a URL passed into the intent to show the observer webpage in a webview.
+ * Sets a loading dialog to let the user know it is retrieving the data
  */
 
 public class ArticleActivity extends Activity {
@@ -67,6 +70,10 @@ public class ArticleActivity extends Activity {
         });
 
     }
+
+    /**
+     * Sets the webview to the article we obtained prior and closes the dialog
+     */
 
     class ArticleWebViewClient extends WebViewClient {
         @Override

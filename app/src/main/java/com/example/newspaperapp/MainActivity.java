@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_SUCCESS)) {
                     token = intent.getStringExtra("token");
                     //Toast.makeText(getApplicationContext(), "Registration token:" + token, Toast.LENGTH_LONG).show();
+                    //registers the app with the plugin on the wordpress website only once
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
                     if (!preferences.getBoolean("Registered", false)) {
                         RequestTask requestTask = new RequestTask();
@@ -76,14 +77,14 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 } else if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ERROR)) {
-                    Toast.makeText(getApplicationContext(), "GCM registration error!", Toast.LENGTH_LONG).show();
-                    Log.w("Testing", "didn't connect to GCM");
+                   // Toast.makeText(getApplicationContext(), "GCM registration error!", Toast.LENGTH_LONG).show();
+                   // Log.w("Testing", "didn't connect to GCM");
                 } else {
-                    Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_LONG).show();
                 }
             }
         };
-
+        //checks if play services are available
         if (checkPlayServices()) {
             Intent intent = new Intent(this, GCMRegistrationIntentService.class);
             startService(intent);
@@ -156,7 +157,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Displays a message in Toast indication the various errors that could occur when
+     * trying to register our app with Google Cloud Messaging. If there is not error,
+     * return true
+     * @return a boolean with the status of google play services
+     */
     private boolean checkPlayServices() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (ConnectionResult.SUCCESS != resultCode) {
@@ -198,13 +204,13 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             runOnUiThread(new Runnable() {
                 public void run() {
-                    if (page == 0) {
+                    if (page == 0) { // reset pageviewer to first image
                         viewPager.setCurrentItem(0);
                         page++;
-                    } else if (page >= customSwipeAdapter.getCount()) {
+                    } else if (page >= customSwipeAdapter.getCount()) { //reset to the beginning
                         page = 0;
                         viewPager.setCurrentItem(page);
-                    } else {
+                    } else { //move the pageviewer one forward
                         page = viewPager.getCurrentItem() + 1;
                         viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                     }
@@ -257,7 +263,8 @@ public class MainActivity extends AppCompatActivity {
                 // HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 // conn.setRequestMethod("GET");
 
-
+                // the proper code is above. We can only register to one plugin at a time so we
+                // are using the demo website because we lack access to the actual website.
                 URL demoURL = new URL("http://lovelace.augustana.edu/observerdemo/index.php/wp-json/apnwp/register?os_type=android&device_token=" + token);
                 HttpURLConnection demoConn = (HttpURLConnection) demoURL.openConnection();
                 demoConn.setRequestMethod("GET");

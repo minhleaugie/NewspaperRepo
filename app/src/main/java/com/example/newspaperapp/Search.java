@@ -45,6 +45,7 @@ public class Search extends AppCompatActivity {
         
         search = (EditText)findViewById(R.id.search);
 
+        //removes the default string from the edit text when user clicks it
         search.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -113,7 +114,10 @@ public class Search extends AppCompatActivity {
         return stringSearch;
     }
 
-
+    /**
+     * Performs search in the background to free up the UI thread and prevents the app
+     * from becoming unresponsive while searching.
+     */
     private class SearchListTask extends AsyncTask<String, Void, List<RssItem>> {
         protected List<RssItem> doInBackground(String[] urls) {
 

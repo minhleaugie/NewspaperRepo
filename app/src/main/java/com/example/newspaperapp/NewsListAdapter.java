@@ -2,6 +2,9 @@ package com.example.newspaperapp;
 
 /**
  * Created by MinhElQueue on 1/14/2017.
+ *
+ * This will display a listview of the news articles with pictures, title, and date.
+ * These can be clicked and redirects the user to the the appropriate article.
  */
 
 import android.content.Context;
@@ -26,6 +29,13 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
     private int layoutResourceId;
     private Drawable image;
 
+    /**
+     * This creates a new adapater and sets the global variables to the passed in parameters
+     *
+     * @param context the context in which to show the listview
+     * @param layoutResourceId  the layout resource id
+     * @param items an list of RSS items
+     */
     public NewsListAdapter(Context context, int layoutResourceId, List<RssItem> items) {
         super(context, layoutResourceId, items);
 
@@ -33,6 +43,7 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         this.layoutResourceId = layoutResourceId;
         this.items = items;
     }
+
 
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -56,6 +67,13 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         return rowView;
     }
 
+    /**
+     * Retrieves the thumbnail size version of the image supplied by wordpress.
+     *
+     * @param imageURL the url of the image to use
+     * @param thumbSizing the size of the thumbnail
+     * @return the new image url with the sizing appended on
+     */
     static String getWordpressThumbnailURL(String imageURL, String thumbSizing) {
         int pos = imageURL.lastIndexOf('.');
         String extension = imageURL.substring(pos);
