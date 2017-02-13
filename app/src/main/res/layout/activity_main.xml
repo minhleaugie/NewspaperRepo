@@ -56,27 +56,6 @@
                 android:id="@+id/list_view">
             </ListView>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:id="@+id/footer">
-
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@+id/textView3"
-                    android:layout_toStartOf="@+id/textView3"></ProgressBar>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Loading"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/textView3" />
-            </RelativeLayout>
         </LinearLayout>
 
             <android.support.design.widget.BottomNavigationView

@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -45,17 +44,9 @@ public class MainActivity extends AppCompatActivity {
     CustomSwipeAdapter customSwipeAdapter;
     NewsListAdapter adapter;
     Timer timer;
-    boolean loadingTask = false;
     int page;
     private List<RssItem> items;
-    private List<RssItem> additionalStories;
-    private ImageButton searchButton;
-    private ImageButton categoryButton;
     private int scrollCount = 2;
-    private int firstVisibleItem = 0;
-    private int visibleItemCount = 0;
-    private int totalItemCount = 0;
-    private RelativeLayout footer;
 
     String token;
 
@@ -65,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
-
-        footer = (RelativeLayout) findViewById(R.id.footer);
-        footer.setVisibility(View.GONE);
 
         makeNewsList();
 
