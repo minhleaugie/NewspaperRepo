@@ -71,8 +71,12 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
 
         }
         textView.setText(items.get(position).getTitle());
-        String date = items.get(position).getDate().substring(0,17);
-        pubText.setText(date);
+        try {
+            String date = items.get(position).getDate().substring(0, 17);
+            pubText.setText(date);
+        } catch(Exception e){
+            pubText.setText("");
+        }
         return rowView;
     }
 
