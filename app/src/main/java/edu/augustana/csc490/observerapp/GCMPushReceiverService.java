@@ -65,7 +65,7 @@ public class GCMPushReceiverService extends GcmListenerService {
         } else {
             intent = new Intent(this, StartScreen.class);
         }
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         int requestCode = notificationID;
         PendingIntent pendingIntent = PendingIntent.getActivity(this, requestCode, intent, PendingIntent.FLAG_ONE_SHOT);
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
