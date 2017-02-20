@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                     //registers the app with the plugin on the wordpress website only once
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
                     if (!preferences.getBoolean("Registered", false)) {
-                        RequestTask requestTask = new RequestTask();
-                        requestTask.doInBackground();
+                        NotificationRegistrationTask registrationTask = new NotificationRegistrationTask();
+                        registrationTask.doInBackground();
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putBoolean("Registered", true).apply();
 
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
         //new ShowMoreInScroll().execute();
     }
 
-    private class RequestTask extends AsyncTask<String, String, String> {
+    private class NotificationRegistrationTask extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... strings) {

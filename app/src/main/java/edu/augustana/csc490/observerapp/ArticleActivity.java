@@ -38,7 +38,7 @@ public class ArticleActivity extends Activity {
         dialog = ProgressDialog.show(this, "", "Loading ...");
         webView.loadUrl(link);
 
-        //instanstiate bottom nav bar
+        //instantiate bottom nav bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 

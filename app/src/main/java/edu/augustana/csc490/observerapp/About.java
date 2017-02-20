@@ -30,8 +30,8 @@ public class About extends AppCompatActivity {
         // set text views text
         titleText.setText("Augustana Observer App Version 1.0.0");
         devText.setText("Developers: Andrew Bainter, Lauren Johnson, Riley Moss, Minh Le");
-        supText.setText("Supervised by: Dr. Forrest Stondahl");
-        ackText.setText("Acknowledments: The Augustana Observer Faculty, Firebase, and Google Communication Services");
+        supText.setText("Supervised by: Dr. Forrest Stonedahl");
+        ackText.setText("Acknowledgments: The Augustana Observer Faculty, Firebase, and Google Communication Services");
 
 
         // instantiate bottom navigation bar

@@ -1,9 +1,5 @@
 package edu.augustana.csc490.observerapp;
 
-/**
- * Created by Ver on 1/6/2017.
- */
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -22,6 +18,8 @@ import java.util.List;
 
 /**
  * Created by andrewbainter13 on 12/9/2016.
+ *
+ * TODO: Include Javadoc for the CLASS here.
  */
 
 public class GCMPushReceiverService extends GcmListenerService {

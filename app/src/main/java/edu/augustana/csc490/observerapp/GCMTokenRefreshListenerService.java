@@ -2,6 +2,8 @@ package edu.augustana.csc490.observerapp;
 
 /**
  * Created by Ver on 1/6/2017.
+ *
+ * TODO: Include Javadoc for the CLASS here.
  */
 import android.content.Intent;
 

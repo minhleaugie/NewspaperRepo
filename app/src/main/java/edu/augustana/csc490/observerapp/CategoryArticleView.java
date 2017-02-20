@@ -11,6 +11,9 @@ import android.widget.ListView;
 
 import java.util.List;
 
+/**
+ * TODO: Javadoc for this class.
+ */
 public class CategoryArticleView extends AppCompatActivity {
     private ProgressDialog dialog;
 

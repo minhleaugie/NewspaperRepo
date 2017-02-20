@@ -2,6 +2,8 @@ package edu.augustana.csc490.observerapp;
 
 /**
  * Created by Ver on 1/6/2017.
+ *
+ * TODO: Include Javadoc for the CLASS here.
  */
 
 import android.app.IntentService;
@@ -38,7 +40,7 @@ public class GCMRegistrationIntentService extends IntentService {
         Intent registrationComplete = null;
 
         //Register token is also null
-        //we will get the token on successfull registration
+        //we will get the token on successful registration
         String token = null;
         try{
             //creating an instanceid

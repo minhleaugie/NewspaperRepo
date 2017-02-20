@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 /**
  * Created by BrightLight on 1/4/2017.
+ *
+ * TODO: Include Javadoc for the CLASS here.
  */
 
 public class RssItem {

@@ -39,7 +39,7 @@ public class StartScreen extends AppCompatActivity {
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(StartScreen.this).create();
             alertDialog.setTitle("No Internet");
-            alertDialog.setMessage("This app requires internet. Please get some");
+            alertDialog.setMessage("This app requires internet. Please get some.");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Close",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {

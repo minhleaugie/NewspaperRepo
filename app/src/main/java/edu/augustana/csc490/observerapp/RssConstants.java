@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * Created by BrightLight on 1/3/2017.
+ *
+ * TODO: Include Javadoc for the CLASS here.
  */
 
 public class RssConstants {

@@ -63,6 +63,8 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
         try {
             String imageURL = items.get(position).getImageURL();
             String thumbnailImageURL = getWordpressThumbnailURL(imageURL, "150x150");
+            //TODO: this redownloading of the image every time getView is called is problematic.
+            //TODO:   see: https://github.com/AugustanaCSC490Winter201617/NewspaperRepo/issues/15
             Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(thumbnailImageURL).getContent());
             if(bitmap != null) {
                 imageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 64,64,false));
@@ -81,7 +83,7 @@ public class NewsListAdapter extends ArrayAdapter<RssItem> {
     }
 
     /**
-     * Retrieves the thumbnail size version of the image supplied by wordpress.
+     * Gets the URL string for the thumbnail size version of the image supplied by wordpress.
      *
      * @param imageURL the url of the image to use
      * @param thumbSizing the size of the thumbnail
