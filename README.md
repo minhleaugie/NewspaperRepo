@@ -25,5 +25,5 @@ Client:
 -The Augustana Observer - Carolyn Yaschur
 
 Acknowledgements:
-We would like to thank the Augustana Observer factulty for giving us this opportunity. Dr. Forrest Stondahl
+We would like to thank the Augustana Observer factulty for giving us this opportunity. Dr. Forrest Stonedahl
 for his guidance througout the app development process. 
