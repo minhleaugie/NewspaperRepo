@@ -16,9 +16,13 @@ Technologies Used:
 
 
 Developers (and their contributions):
+
 -Andrew Bainter - Push notifications, search function, general layout of app
+
 -Lauren Johnson - rss caching, obtain images from rss feed, activity animations
+
 -Minh Le - original demo of the app, obtaining articles from the rss feed, Web view for the article, bottom navigation bar
+
 -Riley Moss - obtaining articles from rss feed based on specific category
 
 Client:
