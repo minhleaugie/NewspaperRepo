@@ -10,8 +10,11 @@ Once the app is download, the user can use our easy to navigate layout to search
 All users will automatically recieve mobile notifications when a new story is published. 
 
 Technologies Used:
+
 -Firebase (push notifications)
+
 -Google Cloud Messaging (push notifications)
+
 -Word Press Plug-ins (push notifications and article images)
 
 
